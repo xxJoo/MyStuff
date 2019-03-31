@@ -1,16 +1,15 @@
 # 当不能在 powershell 运行脚本时
 # 在 powerhsell 上执行以下语句
-# Set-ExecutionPolicy RemoteSigned
-
-
-
+# Get-ExecutionPolicy -List
+# Set-ExecutionPolicy RemoteSigned 
+# Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 
 # 返回提示框
 Function Show-MessageBoxDialog([string]$myString = $find){
     # Write-Host "Show-MessageBoxDialog"
     $PopUpWin = new-object -comobject wscript.shell
-	[void]$PopUpWin.popup($myString)
+    [void]$PopUpWin.popup($myString)
 }
 # Show-MessageBoxDialog($myString = "找到CAD安装路径")
 
@@ -30,7 +29,7 @@ Function Find-File([bool]$key = $false){
 Function Find-PGP_File($CAD2016_Path){
     # Write-Host "Find-PGP_File"
     $CAD2016_Path = Get-ChildItem `
-        -Path 'C:\Users\MyMor\AppData\Roaming\Autodesk\AutoCAD 2016\' `
+        -Path 'C:\Users\*\AppData\Roaming\Autodesk\AutoCAD*\' `
         -Filter 'acad.pgp' -Recurse
     if ($CAD2016_Path -eq $null){
         Show-MessageBoxDialog($myString = "未找到CAD2016安装路径")
@@ -42,6 +41,8 @@ Function Find-PGP_File($CAD2016_Path){
     }
 }
 # $MyPGP = Find-PGP_File
+# 查找结果
+
 
 # CAD 快捷键
 Function ShortCuts(){
@@ -87,6 +88,7 @@ Function ShortCuts(){
     QQ,       *PLINE
     QS,       *QSELECT
     R,        *ROTATE
+    RD,       *EXTERNALREFERENCES
     RE,       *REGEN
     SA,       *UCS
     SS,       *BHATCH
@@ -97,6 +99,8 @@ Function ShortCuts(){
     VF,       *LAYISO
     VG,       *LAYUNISO
     VV,       *VPORTS
+    VW,       *LAYTHW
+    VZ,       *LAYFRZ
     W,        *MOVE
     WE,       *MIRROR
     WQ,       *MLINE
@@ -105,8 +109,12 @@ Function ShortCuts(){
 
     ShortCutAdded
     '
+    # 如何去掉行首的 tab
+    # How To Remove the tab
+    # in front of every line of $myShortCuts
     return $myShortCuts
 }
+
 
 
 
@@ -122,35 +130,24 @@ if ($MyPGP -eq $null){
     return
 }
 
-# 判断 acad.pgp 文件中内容
-$key = Get-Content $MyPGP.FullName -Tail 2
-if ($key -eq '    ShortCutAdded'){
-    Show-MessageBoxDialog($myString = "已经用 PowerShell 添加快捷键")
-    Write-Host "ShortCutAdded"
-    return
+
+# 判断每个 acad.pgp 文件中内容
+foreach ($pgp in $MyPGP)
+{
+    # 如果已经添加则跳过
+    $key = Get-Content $pgp.FullName -Tail 2
+    if (([string]$key) -match "\sShortCutAdded"){
+        Show-MessageBoxDialog($myString = $pgp.FullName + "`n" +"已经用 PowerShell 添加快捷键")
+        Write-Host "ShortCutAdded"
+        continue
+    }
+    # 在 acad.pgp 文件中添加内容
+    $myShortCuts = ShortCuts
+    Add-Content $pgp.FullName $myShortCuts
 }
-
-
-# 在 acad.pgp 文件中添加内容
-$myShortCuts = ShortCuts
-Add-Content $MyPGP.FullName $myShortCuts
 
 # 打开 acad.pgp 文件查看内容
 # Invoke-Item $MyPGP.FullName
 
 Write-Host "End of This Scipt"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
