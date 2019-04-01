@@ -18,7 +18,7 @@ Function Find-File([bool]$key = $false){
     Write-Host "Find-File"
     $find = Get-ChildItem -Path C:\ -Depth 2 -Filter 'AutoCAD 2016' `
         -ErrorAction SilentlyContinue -ErrorVariable $abcd
-    if ($find -ne $null){
+    if ($null -ne $find){
         Show-MessageBoxDialog($myString = "找到CAD安装路径")
         return $find
     }
@@ -31,7 +31,7 @@ Function Find-PGP_File($CAD2016_Path){
     $CAD2016_Path = Get-ChildItem `
         -Path 'C:\Users\*\AppData\Roaming\Autodesk\AutoCAD*\' `
         -Filter 'acad.pgp' -Recurse
-    if ($CAD2016_Path -eq $null){
+    if ($null -eq $CAD2016_Path){
         Show-MessageBoxDialog($myString = "未找到CAD2016安装路径")
         return
     }
@@ -126,7 +126,7 @@ Write-Host "Function Main"
 
 # 在cad安装文件夹中查找acad.pgp文件
 $MyPGP = Find-PGP_File
-if ($MyPGP -eq $null){
+if ($null -eq $MyPGP){
     return
 }
 
