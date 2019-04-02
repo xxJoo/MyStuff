@@ -1,0 +1,110 @@
+// Place your key bindings in this file to overwrite the defaults
+// alt + i, j, k,l
+[
+    {
+    "key": "alt+j",
+    "command": "cursorLeft"
+    },
+    {
+    "key": "alt+j ",
+    "command": "list.collapse",
+    "when": "listFocus"
+    },
+    {
+    "key": "alt+k",
+    "command": "cursorDown"
+    },
+    // {
+    // "key": "alt+k",
+    // "command": "repl.action.historyNext",
+    // "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
+    // }, 
+    {
+    "key": "alt+k",
+    "command": "settings.action.focusSettingsFile",
+    "when": "inSettingsSearch"
+    }, 
+    {
+    "key": "alt+k",
+    "command": "showNextParameterHint",
+    "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    }, 
+    {
+    "key": "alt+k",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    }, 
+    {
+    "key": "alt+k",
+    "command": "keybindings.editor.focusKeybindings",
+    "when": "inKeybindings && inKeybindingsSearch"
+    }, 
+    {
+    "key": "alt+k",
+    "command": "keybindings.editor.focusKeybindings",
+    "when": "inKeybindings && inKeybindingsSearch"
+    }, 
+    {
+    "key": "alt+k",
+    "command": "search.focus.nextInputBox",
+    "when": "inputBoxFocus && searchViewletVisible"
+    }, 
+    {
+    "key": "alt+k",
+    "command": "workbench.action.interactivePlayground.arrowDown",
+    "when": "interactivePlaygroundFocus && !editorTextFocus"
+    },
+    {
+    "key": "alt+l",
+    "command": "cursorRight"
+    },
+    // {
+    // "key": "alt+l",
+    // "command": "repl.action.acceptSuggestion",
+    // "when": "editorTextFocus && inDebugRepl && suggestWidgetVisible"
+    // }, 
+    {
+    "key": "alt+l",
+    "command": "list.expand",
+    "when": "listFocus"
+    },
+    {
+    "key": "alt+i",
+    "command": "cursorUp"
+    },
+    // {
+    // "key": "alt+i",
+    // "command": "repl.action.historyPrevious",
+    // "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
+    // }, 
+    {
+    "key": "alt+i",
+    "command": "showPrevParameterHint",
+    "when": "editorTextFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    }, 
+    {
+    "key": "alt+i",
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+    "key": "alt+i",
+    "command": "list.focusUp",
+    "when": "listFocus"
+    }, 
+    {
+    "key": "alt+i",
+    "command": "search.action.focusSearchFromResults",
+    "when": "firstMatchFocus && searchViewletVisible"
+    }, 
+    {
+    "key": "alt+i",
+    "command": "search.action.focusSearchFromResults",
+    "when": "firstMatchFocus && searchViewletVisible"
+    }, 
+    {
+    "key": "alt+i",
+    "command": "workbench.action.interactivePlayground.arrowUp",
+    "when": "interactivePlaygroundFocus && !editorTextFocus"
+    }
+]
