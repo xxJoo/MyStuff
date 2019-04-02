@@ -107,7 +107,7 @@ Function ShortCuts(){
     WW,       *REVCLOUD
     XX,       *XLINE
 
-    ShortCutAdded
+    ; ShortCutAdded
     '
     # 如何去掉行首的 tab
     # How To Remove the tab
@@ -136,7 +136,7 @@ foreach ($pgp in $MyPGP)
 {
     # 如果已经添加则跳过
     $key = Get-Content $pgp.FullName -Tail 2
-    if (([string]$key) -match "\sShortCutAdded"){
+    if (([string]$key) -match "\s; ShortCutAdded"){
         Show-MessageBoxDialog($myString = $pgp.FullName + "`n" +"已经用 PowerShell 添加快捷键")
         Write-Host "ShortCutAdded"
         continue
