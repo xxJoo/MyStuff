@@ -14,7 +14,7 @@
     
     用 lisp 加载 CAD 需要修改的配置
 
-- CAD_ShortCuts.ps1
+- CAD_ShortCuts.ps1“
 
     用 powershell 来自动修改 CAD 的快捷键
 
