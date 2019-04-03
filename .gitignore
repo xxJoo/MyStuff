@@ -1,5 +1,16 @@
-.vs/
-.vscode/
+# 避免忘记
+# https://www.cnblogs.com/kevingrace/p/5690241.html
+
+/.vs/
+/.vscode/
+/MarkdownTemp/*
+!/MarkdownTemp/MyMarkdownTemp.md
+!/MarkdownTemp/图片1.jpg
+!/MarkdownTemp/超链接txt文本.txt
+
+
+
+
 *._ls
 *.log
 *.draft
