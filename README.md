@@ -12,6 +12,10 @@ CAD需要修改的配置
 VS_Code 快捷键
 用 Alt ijkl 移动方向
 
+## VS_CodeSetting.json
+VS_Code 设置
+matlab 内置调用
+
 
 ## ban.lsp
 装配式板配筋算法
