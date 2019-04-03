@@ -1,27 +1,51 @@
+; Autolisp
+; 
+; 20190403
 
+(defun c:aaa (/ *error* main doc)
+	(vl-load-com)
+	(defun main()
+		(princ "\nÕâÀïÊÇaaaÖ÷³ÌĞò")
+		(vla-StartUndoMark (setq doc (vla-get-ActiveDocument (vlax-get-acad-object))))
 
-; ä½¿ç”¨ ActiveX
-; (vl-load-com)
+		; ÈçºÎÅúÁ¿
+		; ĞÎ³É·â±Õµ¥Ôª
+		; boundary ÃüÁî
 
+		; ĞÎ³É¶à¶ÎÏß Í¼ÔªÃû ºÍ Ñ¡Ôñµã
+		(setq ent-name (car (entsel)))
+		; »ñµÃ ´Ë¶à¶ÎÏß µÄ±äÌåÊı¾İ
+		(setq vla-data (vlax-ename->vla-object ent-name))
+		; (vlax-dump-Object vla-data)
+		(setq mycoor (vlax-get-property vla-data 'Coordinates))
+		(setq mycoorlist (vlax-safearray->list (vlax-variant-value mycoor)))
 
-; å¦‚ä½•æ‰¹é‡
-; å½¢æˆå°é—­å•å…ƒ
-; boundary å‘½ä»¤
+		; (princ mycoorlist)
+		; (princ mycoorlist)
+		; (prin1 mycoorlist)
+		; (print mycoorlist)
+		; (print mycoorlist)
+		; (print mycoorlist)
 
-; å½¢æˆå¤šæ®µçº¿ å›¾å…ƒå å’Œ é€‰æ‹©ç‚¹
-(setq ent-name (car (entsel)))
+		(vla-EndUndoMark doc)
+		(princ)
+	)
+	(defun *error*(s)
+		(princ s)
+		(vla-EndUndoMark doc)
+		(princ)
+	)
+	(main)
+)
 
-; è·å¾— æ­¤å¤šæ®µçº¿ çš„å˜ä½“æ•°æ®
-(setq vla-data (vlax-ename->vla-object ent-name))
-; (vlax-dump-Object vla-data)
 ;	----------------------------------------------------------------------
-; 	IAcadLWPolyline: AutoCAD Lightweight Polyline æ¥å£
-;	ç‰¹æ€§å€¼:
+; 	IAcadLWPolyline: AutoCAD Lightweight Polyline ½Ó¿Ú
+;	ÌØĞÔÖµ:
 ;   Application (RO) = #<VLA-OBJECT IAcadApplication 00007ff74f3c3f10>
 ;   Area (RO) = 6.7975e+006
 ;   Closed = -1
 ;   ConstantWidth = 0.0
-;   Coordinate = ...ä¸æ˜¾ç¤ºå¸¦ç´¢å¼•çš„å†…å®¹...
+;   Coordinate = ...²»ÏÔÊ¾´øË÷ÒıµÄÄÚÈİ...
 ;   Coordinates = (49814.3 15110.4 49364.3 15110.4 49364.3 15560.4 ... )
 ;   Document (RO) = #<VLA-OBJECT IAcadDocument 0000023e10c05368>
 ;   Elevation = 0.0
@@ -46,10 +70,10 @@
 ;   Visible = -1
 ;	----------------------------------------------------------------------
 
+ 
 
 
-(setq points-safearray )
-; æœ‰ç”¨çš„å±æ€§
+; ÓĞÓÃµÄÊôĞÔ
 ; Area
 ; Closed
 ; ConstantWidth
@@ -60,35 +84,80 @@
 ; Material
 ; Thickness
 
-; å¾—åˆ°å˜ä½“çš„æŸä¸€ä¸ªå±æ€§
-; è¿”å›å˜ä½“ç±»å‹
-(vlax-get-property vla-data 'Coordinates)
-
-; å¾—åˆ°å˜ä½“ç±»å‹çš„å±æ€§çš„å€¼
-(vlax-variant-value )
-
-; å°†å˜ä½“ç±»å‹çš„å±æ€§çš„å€¼(ä¹Ÿæ˜¯å˜ä½“)è½¬åŒ–ä¸ºä¸€èˆ¬ç±»å‹
-(vlax-safearray->list )
-
-; åˆ¤æ–­å¤šæ®µçº¿æ˜¯å¦é—­åˆ
-(vlax-curve-isClosed )
-
-
-
-; æ“ä½œå¤šæ®µçº¿çš„è¾¹
-; åˆ¤æ–­é¢å¯¹è±¡çš„ç›¸äº’ä½ç½®å…³ç³»
+; µÃµ½±äÌåµÄÄ³Ò»¸öÊôĞÔ
+; ·µ»Ø±äÌåÀàĞÍ
 
 
 
 
 
-; å¤šæ®µçº¿çš„é“¾è¡¨
-(entget (car(entsel)))
-; é€‰æ‹©å¯¹è±¡: 
+; µÃµ½±äÌåÀàĞÍµÄÊôĞÔµÄÖµ
+; (vlax-variant-value )
+
+; ½«±äÌåÀàĞÍµÄÊôĞÔµÄÖµ(Ò²ÊÇ±äÌå)×ª»¯ÎªÒ»°ãÀàĞÍ
+; (vlax-safearray->list )
+
+; ÅĞ¶Ï¶à¶ÎÏßÊÇ·ñ±ÕºÏ
+; (vlax-curve-isClosed )
+
+; (setq points-safearray )
+
+; ²Ù×÷¶à¶ÎÏßµÄ±ß
+; ÅĞ¶ÏÃæ¶ÔÏóµÄÏà»¥Î»ÖÃ¹ØÏµ
+
+
+
+
+(defun c:bbb (/ *error* main doc)
+	(vl-load-com)
+	(defun main()
+		(princ "\nbbb³ÌĞò¿ªÊ¼")
+		(vla-StartUndoMark (setq doc (vla-get-ActiveDocument (vlax-get-acad-object))))
+
+		; Ö÷³ÌĞò±àÂë
+
+		; µÃµ½Ñ¡ÔñÍ¼ÔªµÄ±í myentlist
+		(setq myentlist (entget (car(entsel))))
+
+		; µÃµ½±íÖĞµã pts
+		(setq i 0)
+		(setq pts nil) 
+		(repeat (length myentlist) 
+			(if (= (car (nth i myentlist)) 10) 
+				(setq pts (append pts (list (cdr (nth i myentlist)))))
+			) 
+			(setq i (1+ i))
+		) 
+		(print pts)
+
+		; µÃµ½±íÖĞµã pts2
+		(setq pts2 nil)
+		(foreach lst myentlist 
+			(if (= (car lst) 10) 
+				(setq pts2 (append pts2 (list (cdr lst))))
+			)
+		)
+		(print pts2)
+
+
+		(vla-EndUndoMark doc)
+		(princ)
+	)
+	(defun *error*(s)
+		(princ s)
+		(vla-EndUndoMark doc)
+		(princ)
+	)
+	(main)
+)
+
+; ¶à¶ÎÏßµÄÁ´±í
+
+; Ñ¡Ôñ¶ÔÏó: 
 ; (
-; 	(-1 . <å›¾å…ƒå: 7ff443b46b60>) 
+; 	(-1 . <Í¼ÔªÃû: 7ff443b46b60>) 
 ; 	(0 . "LWPOLYLINE") 
-; 	(330 . <å›¾å…ƒå: 7ff443b039f0>) 
+; 	(330 . <Í¼ÔªÃû: 7ff443b039f0>) 
 ; 	(5 . "1E8E") 
 ; 	(100 . "AcDbEntity") 
 ; 	(67 . 0) 
@@ -121,7 +190,10 @@
 ; 	(42 . 0.0) 
 ; 	(91 . 0) 
 ; 	(210 0.0 0.0 1.0))
-; å‘½ä»¤: *å–æ¶ˆ*
+; ÃüÁî: *È¡Ïû*
+
+
+
 
 
 
