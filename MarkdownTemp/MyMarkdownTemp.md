@@ -1,6 +1,6 @@
 <!-- Makedown Template -->
 <!-- 模板文件 2019.4.3 -->
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 # 这是一级标题 $x^2+5$
 ## 这是二级标题
