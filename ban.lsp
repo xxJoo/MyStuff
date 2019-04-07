@@ -110,6 +110,16 @@
 
 (defun c:bbb (/ *error* main doc)
 	(vl-load-com)
+
+	(defun (d)
+		(if (and (= (vla-get-ActiveSpace d) 0) (= (vla-get-MSpace d) ':vlax-false))
+			(vla-get-PaperSpace d)
+			(vla-get-ModelSpace d)
+		)
+	)
+	
+
+
 	(defun main()
 		(princ "\nbbb³ÌÐò¿ªÊ¼")
 		(vla-StartUndoMark (setq doc (vla-get-ActiveDocument (vlax-get-acad-object))))
