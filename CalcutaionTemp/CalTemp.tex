@@ -1,0 +1,527 @@
+% !TEX program = latexmk
+\documentclass[b5paper,UTF8]{book}
+
+% 参数
+% #omega_0
+% #mu_s
+% #mu_z
+
+\usepackage{ctex}
+% plan
+\usepackage{lscape}
+\usepackage{geometry}
+    \geometry{top = 0.8 in}
+    \geometry{bottom = 1 in}
+    \geometry{left = 0.5 in}
+    \geometry{right = 0.5 in}
+% headings and footings
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhead{}
+    % E even page O odd page 
+    % L left C center R right 
+    % H heading F footing
+    \fancyhead[LO,RE]{{\arabic{chapter}}}
+    \fancyhead[RO,LE]{\rightmark}
+% Chinese title
+\usepackage{titlesec}
+% \titleformat{command}[shape]{format}{label}{sep}{before}[after]
+\titleformat{\chapter}{\centering\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
+% formulas
+\usepackage{amsmath}
+% table
+\usepackage{booktabs}
+% pictures
+% \usepackage{graphicx}
+% \usepackage{subfigure}
+\usepackage{tkz-graph}
+% flow-chart
+\usepackage{tikz,mathpazo}
+\usetikzlibrary{shapes.geometric, arrows}
+
+
+
+% document
+
+\begin{document}
+
+% cover
+
+\thispagestyle{empty}
+
+\begin{center}
+\vspace*{3 cm}
+
+\includegraphics[width = 3 in]{cover.png}
+\vspace*{1 cm}
+
+\heiti{\Huge{《偶学费是个牛逼》学习笔记}}
+\vspace*{1 cm}
+
+\Large {1218年3月21日}
+\vspace*{0.5cm}
+
+梅超风
+\end{center}
+\vspace*{4cm}
+
+\clearpage
+
+% 封二
+\newpage
+\thispagestyle{empty}
+
+\noindent
+书名：《九阴真经》\\
+作者：黄裳\\
+出版：大宋皇家出版社\\
+版次：1164年8月第1版\\
+书号：ISBN 7-181-9527
+
+\clearpage
+
+% 目录
+\setcounter{page}{1}
+\pagenumbering{Roman}
+% arabic - 阿拉伯数字
+% roman - 小写的罗马数字
+% Roman - 大写的罗马数字
+% alph - 小写的字符形式
+% Alph -大写的字符形式
+\tableofcontents
+% \thispagestyle{empty}
+
+\clearpage
+
+% 目录之后开始编页码
+\setcounter{page}{1}
+\pagenumbering{arabic}
+% arabic - 阿拉伯数字
+% roman - 小写的罗马数字
+% Roman - 大写的罗马数字
+% alph - 小写的字符形式
+% Alph -大写的字符形式
+
+
+\chapter{数学公式}
+
+\section{行内和行间数学式子}
+
+在此之前说明以下符号的应用，
+字体大小的双斜杠：$ \verb|\\|$，
+比较大一号的双斜杠：$\backslash\backslash$。
+
+下面来看一下简单的行内式子和行间式子。
+
+基本风压：$\omega_0 = 0.4$，
+% 基本风压：$\omega_0 = #omega_0$，
+高度变化修正系数：$\mu_z = 1$，
+% 高度变化修正系数：$\mu_z = #mu_z$，
+体型系数：$\mu_s = 1$，
+% 体型系数：$\mu_s = #mu_s$，
+以下是不带编号的公式：
+
+\[ \omega_k = \beta_z \mu_z \mu_s \omega_0 \]
+
+\hangafter = 1
+\hangindent = 2 em
+式中：\\
+$\omega_0$---基本风压\\
+$\mu_z$---高度变化修正系数\\
+$\mu_s$---体型系数\\
+$\omega_k$---风压标准值\\
+
+
+
+这个时候我要写很多废话来把这里凑满一行内容。
+我现在写的字还不够一行，所以我还要多写点。
+同样不带编号的式子，
+但是有多行的情况：
+
+\begin{align*}
+    f(x) &= (x+a)(x+b) \\
+    &= x^2 + (a+b)x + ab
+\end{align*}
+
+
+\section{单个公式}
+
+
+
+\subsection{标准单个公式环境}
+
+\begin{verbatim}
+\begin{equation}
+...
+\end{equation} 
+\end{verbatim}
+
+它是最一般的公式环境，表示一个公式，
+默认情况下之表示一个单行的公式，
+但是它的功能可以通过内嵌各种其他环境进行扩展。
+它可以内嵌的一些关于对齐的环境将在后面介绍。
+然后来一个代编号的公式。
+\begin{equation}\label{eq:wind}
+    \omega_0 = \beta_z \mu_z \mu_s \omega_k \\
+            = 0.4 \times 1 \times 1 \times 0.4
+\end{equation}
+这个时候我们要引用公式\ref{eq:wind}，
+来说明引用公式的一些问题。
+
+
+\section{多个公式}
+
+\subsection{公式跨页}
+
+默认一个公式环境里面的多行公式是不会跨页显示的，
+可以使用下面命令开启全局的自动跨页显示：
+\begin{verbatim}
+\allowdisplaybreaks
+或
+\allowdisplaybreaks[n]
+\end{verbatim}
+n的值为0到4,表示分页的坚决程度，
+例如0表示能不分页就不分页，4表示强制分页。
+
+也可以在公式环境中使用
+\begin{verbatim}
+\displaybreak 
+\end{verbatim}
+
+手工指定分页，它同样可以带有这个参数。
+
+\subsection{多个公式基本的对齐环境}
+
+align（多个公式）
+这是最基本的对齐环境，
+其他多公式环境都不同程度地依赖它。
+与表格环境一样，
+它采用“\&”分割各个对齐单元，
+使用“$ \verb|\\|$”换行。
+它的每行是一个公式，都会独立编号。
+在排版过程中，它将\&分出来的列又分成组，
+组间特定方式排版，具体方式在flalign环境中讨论。
+
+\begin{align}
+ f(x) &= (x+a)(x+b) \\
+ &= x^2 + (a+b)x + ab
+\end{align}
+
+gather
+它是最简单的多行公式环境，
+自己不提供任何对齐。
+其中的各行公式按照全局方式分别对齐。
+在设置了全局左对齐之后，
+因为不存在内部各个公式之间对排版的干扰，
+这种环境非常适合写数学推导或者证明。
+
+\begin{gather}
+E(X)=\lambda	\qquad	D(X)=\lambda	\\
+E(\bar{X})=\lambda	\\
+D(\bar{X})=\frac{\lambda}{n}	\\
+E(S^2)=\frac{n-1}{n}\lambda
+\end{gather}
+
+
+
+flalign
+虽然可以使用多个\&，
+但是比较一般的用法是在只在等号前面使用一个\&，
+它使所有列表现地像是根据等号对齐了，
+因此这个环境很适合用来编写多行的公式推导和数值计算过程。
+例如：
+
+
+\begin{align*}
+E(S^2)	&=E\left(\frac{1}{n} \Sigma (X_i-\bar{X})^2\right)	\\
+&	=E\left(\frac{1}{n}\Sigma X_i^2\right)
+ - E\left(\frac{1}{n}\Sigma 2\bar{X}X_i\right)
+ + E\left(\frac{1}{n}\Sigma \bar{X}^2\right)	\\
+&	=EX^2 -E(\bar{X}^2)	\\
+&	=DX + (EX)^2 - D\bar{X} - (E\bar{X})^2	\\
+&	=\frac{n-1}{n}DX
+\end{align*}
+
+
+面完整地描述一下flalign和align环境是如何处理多\&情况下的对齐的。
+
+根据\& （假设n个）将一行分为n+1列。
+从左向右将列两个分为一组，第一组紧靠页左侧，
+最后一组紧靠页左侧，其余均匀散布在整个行中。
+当公式比较短时，中间可能会有几段空白。
+
+需要注意的是：
+\begin{enumerate}
+\item 每一组内部也是有对齐结构的！
+    它们在所在位置上向中间对齐的，
+    即第一列向右对齐，第二列向左对齐。
+\item 所谓紧靠页左/右是在进行了组内对齐调整之后，
+    最长的一块紧靠上去。
+    也就是说对于长度不一两行，
+    较短的那一行是靠不上去的。
+\item 如果总共有奇数个列，
+    及最后一组只有一个列，
+    则它右对齐到页右侧，
+    即所有行的最后一列的右侧都靠在页右侧。
+\end{enumerate}
+
+
+
+下面用一个极端的例子来说明这个环境的特点：
+\begin{flalign}
+xyz &= b+c &=123 &=123 &=ssss \\
+x  &= 1+12 &=432523452345 &=2 &=a\\
+  &= 2  &=982739 &=p &=ttt
+\end{flalign}
+
+multline
+注意是multline 不是multiline，虽然它就是那个意思。
+它不支持“\&”分列。首行左对齐，末行右对齐，其余各行分别按照全局方式对齐。
+
+
+\begin{multline}
+E(X)=\lambda	\qquad	D(X)=\lambda	\\
+E(\bar{X})=\lambda	\\
+D(\bar{X})=\frac{\lambda}{n}	\\
+E(S^2)=\frac{n-1}{n}\lambda
+\end{multline}
+
+
+没有常见的应用模式。
+
+alignat
+它接收一个参数用来指定根据哪一列对齐。
+
+\begin{alignat}{2}
+ \sigma_1 &= x + y  &\quad \sigma_2 &= \frac{x}{y} \\  
+ \sigma_1' &= \frac{\partial x + y}{\partial x} & \sigma_2'
+    &= \frac{\partial \frac{x}{y}}{\partial x}
+\end{alignat}
+
+\subsection{用于内嵌的对齐环境}
+
+这些环境无法独立构成一个数学环境，必须要嵌入在其他环境内部。
+
+例如：aligned
+\begin{equation}
+ \left.\begin{aligned}
+        B'&=-\partial \times E,\\
+        E'&=\partial \times B - 4\pi j,
+       \end{aligned}
+ \right\}
+ \qquad \text{Maxwell's equations}
+\end{equation}
+
+$\backslash$left
+和
+$\backslash$right
+后加一个括号的
+表示用于自动调整各种括号的大小，
+必须配对使用。
+公式中的
+$\backslash$left. 
+是一个虚的
+$\backslash$left，
+目的是为了和
+$\backslash$right
+$\backslash$\}配对。
+
+split
+它用于将一个公式拆分成多行，
+但是它整体还只是一个公式。
+
+\begin{equation}
+\begin{split}
+(a + b)^4
+&= (a + b)^2 (a + b)^2      \\
+&= (a^2 + 2ab + b^2)(a^2 + 2ab + b^2)  \\
+&= a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4
+\end{split}
+\end{equation}
+
+
+
+\section{计算过程}
+
+有时候我们并不需要公式，
+而是要列出我们的计算过程，
+这个时候除了写出公式和取值以外，
+还需要列出大量的中间过程。
+这个时候最好能用行间公式，
+并且书写的时候左对齐。
+
+
+
+\begin{align*}
+    A &= b + c(d + e) \\
+    &= 25 + 95 \times (65 + 56)  \\
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{作图技术}
+
+\section{插入图片}
+
+\begin{figure}[htbp]%[htbp] 
+    \begin{center} 
+        \includegraphics[width = 0.5 \textwidth]{cover.png}
+        % \includegraphics{bibliography.jpg} 
+        \caption{文献引用} 
+        \label{fig:bibliography} 
+    \end{center} 
+\end{figure}
+
+
+
+
+\section{流程图}
+
+% 流程图定义基本形状
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+%定义流程图具体形状
+\node (start) [startstop] {Start};
+\node (in1) [io, below of=start] {Input};
+\node (pro1) [process, below of=in1] {Process 1};
+\node (dec1) [decision, below of=pro1, yshift=-0.5cm] {Decision 1};
+\node (pro2a) [process, below of=dec1, yshift=-0.5cm] {Process 2a};
+\node (pro2b) [process, right of=dec1, xshift=2cm] {Process 2b};
+\node (out1) [io, below of=pro2a] {Output};
+\node (stop) [startstop, below of=out1] {Stop};
+%连接具体形状
+\draw [arrow](start) -- (in1);
+\draw [arrow](in1) -- (pro1);
+\draw [arrow](pro1) -- (dec1);
+\draw [arrow](dec1) -- (pro2a);
+\draw [arrow](dec1) -- (pro2b);
+\draw [arrow](dec1) -- node[anchor=east] {yes} (pro2a);
+\draw [arrow](dec1) -- node[anchor=south] {no} (pro2b);
+\draw [arrow](pro2b) |- (pro1);
+\draw [arrow](pro2a) -- (out1);
+\draw [arrow](out1) -- (stop);
+\end{tikzpicture}
+
+\section{简图}
+
+\begin{tikzpicture}[scale = 1]
+    \draw (0, 0) rectangle (2.5, 6.0);
+    \draw (0.405, 0.405) circle (0.125);
+    \draw (0.968333333333, 0.405) circle (0.125);
+    \draw (1.53166666667, 0.405) circle (0.125);
+    \draw (2.095, 0.405) circle (0.125);
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+\chapter{表格}
+
+
+湛江网架参数：高度，140.000m；半径，20m。    
+汉中(陶修)网架参数：高度，43777；半径，62900。
+岩井网架参数：高度，140.000m；半径，20m。
+
+
+\begin{table}[htbp]
+\centering
+\caption{网壳划分形式}
+\label{tab:TrussDivided}
+\begin{tabular}{cc}
+\toprule
+    百分比            & 轴线含钢量     \\
+\midrule
+双层凯威特A-6  8.54   &      20\%      \\
+双层凯威特A-6  8.54   &      20\%      \\
+双层凯威特A-6  6.40   &      20\%      \\
+双层凯威特A-6  6.27   &      20\%      \\
+\hline
+湛江                  &      20\%      \\
+汉中                  &      20\%      \\
+汉中                  &      20\%      \\
+\bottomrule                             
+\end{tabular}
+\end{table}
+
+
+\begin{landscape}
+% \usepackage{lscape} % 单页的页面布局
+\begin{table}
+\centering
+\caption{网壳位移}
+\label{tab:TrussDisplacement}
+\begin{tabular}{ccc}
+\toprule
+                & 支座刚度(m) & \\
+\midrule 
+网架     & 3            &       \\
+网架     & 0            &       \\
+网架     & 2.8 2.8   &          \\
+修哥网架 & 2.8 2.8   &          \\
+湛江网架 &               &      \\
+\bottomrule                             
+\end{tabular}
+\end{table}
+\end{landscape}     
+
+
+
+% Courier New
+% monospace
+% Source Code Pro
+% Menlo
+% Consolas
+% Monaco
+% Dejavu Sans Mono
+
+
+
+
+
+
+\chapter{文献引用}
+
+引用一篇文章\cite{article1}，引用一本书\cite{book1}，等等。
+
+% LaTeX 标准选项及其样式共有以下8种：
+
+% plain，按字母的顺序排列，比较次序为作者、年度和标题.
+% unsrt，样式同plain，只是按照引用的先后排序.
+% alpha，用作者名首字母+年份后两位作标号，以字母顺序排序.
+% abbrv，类似plain，将月份全拼改为缩写，更显紧凑.
+% ieeetr，国际电气电子工程师协会期刊样式.
+% acm，美国计算机学会期刊样式.
+% siam，美国工业和应用数学学会期刊样式.
+% apalike，美国心理学学会期刊样式.
+
+\begin{thebibliography}{99} 
+
+\bibitem{article1} 文章标题 作者 期刊 年代 页码 
+% \bibitem{book1} 书标题 作者 出版社 年代 
+\bibitem{book1} 结构力学I（第二版），萧允徽，张来仪，机械工业出版社，2015.8 
+    
+\end{thebibliography} 
+
+
+
+\end{document}
