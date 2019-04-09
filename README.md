@@ -4,9 +4,9 @@ MyStuff is a tool I used in daily work.
 
 # AutoCAD
 
-## Fonts
-## Lisp
-## PowerShell Script
+- Fonts
+- Lisp
+- PowerShell Script
 
 # VS Code
 
