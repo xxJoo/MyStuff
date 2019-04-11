@@ -1,4 +1,4 @@
-; ShortCutAdded By PowerShell
+; ShortCuts Added By PowerShell
 ;  -- Will Clark Defined Command Aliases --
 ;  Make any changes or additions to the default AutoCAD command aliases in 
 ;  this section to ensure successful migration of these settings when you
@@ -46,6 +46,7 @@ T,        *TRIM
 VA,       *DRAWORDER
 VB,       *LAYON
 VC,       *LAYOFF
+VE,       *LIST
 VF,       *LAYISO
 VG,       *LAYUNISO
 VV,       *VPORTS
@@ -56,5 +57,6 @@ WE,       *MIRROR
 WQ,       *MLINE
 WW,       *REVCLOUD
 XX,       *XLINE
+
 
 ; ShortCutAdded
