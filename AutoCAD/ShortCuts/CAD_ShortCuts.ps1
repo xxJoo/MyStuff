@@ -5,13 +5,20 @@
 # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 
-# 返回提示框
+# Show message in a box
+# message $myString
 Function Show-MessageBoxDialog([string]$myString = $find){
     # Write-Host "Show-MessageBoxDialog"
     $PopUpWin = new-object -comobject wscript.shell
     [void]$PopUpWin.popup($myString)
 }
 # Show-MessageBoxDialog($myString = "找到CAD安装路径")
+
+# -------------------------------------------------------------------
+# via regitry
+# find the installed program path
+# then find the pgp file
+# -------------------------------------------------------------------
 
 # 查找 CAD 安装文件夹
 Function Find-File([bool]$key = $false){
@@ -43,6 +50,10 @@ Function Find-PGP_File($CAD2016_Path){
 # $MyPGP = Find-PGP_File
 # 查找结果
 
+# -------------------------------------------------------------------
+# import shortcuts form current path
+# file: AutoCAD_ShortCuts.txt
+# -------------------------------------------------------------------
 
 # CAD 快捷键
 Function ShortCuts(){
