@@ -2,6 +2,11 @@
 
 MyStuff is a tool I used in daily work.
 
+## To Do
+- Find the installed program path via registry
+- Read the shortcuts form a text file
+- Finish the calculation
+
 # AutoCAD
 
 - Fonts
@@ -27,4 +32,8 @@ My Caculator template
 - Python
 - TeX
 
+# Install
+
+- InstallPython.ps1
+- InstallNode.ps1
 

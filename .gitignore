@@ -1,8 +1,15 @@
-# 避免忘记
+# ignore rules
 # https://www.cnblogs.com/kevingrace/p/5690241.html
 
+# Test script
+/.Testors/*
+# VS settings
 /.vs/
+# VS code settings
 /.vscode/
+
+/AutoCAD/*
+
 /MarkdownTemp/*
 !/MarkdownTemp/MyMarkdownTemp.md
 !/MarkdownTemp/图片1.jpg
@@ -11,7 +18,6 @@
 /CalcutaionTemp/*
 !/CalcutaionTemp/Calcutation.py
 !/CalcutaionTemp/CalTemp.tex
-
 
 
 
