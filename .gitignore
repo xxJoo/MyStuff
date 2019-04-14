@@ -9,6 +9,7 @@
 /.vscode/
 
 /AutoCAD/*
+!/AutoCAD/Fonts
 
 /MarkdownTemp/*
 !/MarkdownTemp/MyMarkdownTemp.md
