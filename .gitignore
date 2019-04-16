@@ -17,12 +17,14 @@
 !/MarkdownTemp/超链接txt文本.txt
 
 /CalcutaionTemp/_Template.tex
+/CalcutaionTemp/*.pdf
 
 *__*
 *Testor*
 
 *._ls
 *.pyc
+*.gz
 
 *.log
 *.draft
