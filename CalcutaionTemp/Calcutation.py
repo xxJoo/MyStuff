@@ -5,11 +5,11 @@ import fileinput
 
 
 # Function: ReadFileToString
-# input: [string]fileName (the name of a file)
+# input: [string]filePath (the name of a file)
 # return: [string]text
-def ReadFileToString(fileName):
+def ReadFileToString(filePath):
     lines = []
-    for line in fileinput.input(fileName):
+    for line in fileinput.input(filePath):
         lines.append(line)
     text = ''.join(lines)
     return text
