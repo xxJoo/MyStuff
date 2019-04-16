@@ -8,8 +8,8 @@
 # VS code settings
 /.vscode/
 
-/AutoCAD/*
-!/AutoCAD/Fonts
+
+
 
 /Temp_Markdown/*
 !/Temp_Markdown/MyMarkdownTemp.md
