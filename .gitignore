@@ -16,13 +16,14 @@
 !/MarkdownTemp/图片1.jpg
 !/MarkdownTemp/超链接txt文本.txt
 
-/CalcutaionTemp/*
-!/CalcutaionTemp/Calcutation.py
-!/CalcutaionTemp/CalTemp.tex
+/CalcutaionTemp/_Template.tex
 
-
+*__*
+*Testor*
 
 *._ls
+*.pyc
+
 *.log
 *.draft
 
