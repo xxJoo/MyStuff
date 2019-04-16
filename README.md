@@ -12,28 +12,30 @@ MyStuff is a tool I used in daily work.
 - Fonts
 - Lisp
 - PowerShell Script
+  
+# Install
 
-# VS Code
+- Python
+- Node
+- WinDock
 
-- VS_Code_keybindings.json
-- VS_CodeSetting.json
-- VS_CodePlugIns.txt
 
-# MarkdownTemp
+# Settings
 
-My Markdown template
+## VS Code Settings
 
-- Markdown
 
-# CalcutaionTemp
+
+# Templates
+
+## Markdown
+
+## Calcutaion
 
 My Caculator template
 
 - Python
 - TeX
 
-# Install
 
-- InstallPython.ps1
-- InstallNode.ps1
 

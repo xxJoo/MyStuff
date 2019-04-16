@@ -11,13 +11,13 @@
 /AutoCAD/*
 !/AutoCAD/Fonts
 
-/MarkdownTemp/*
-!/MarkdownTemp/MyMarkdownTemp.md
-!/MarkdownTemp/图片1.jpg
-!/MarkdownTemp/超链接txt文本.txt
+/Temp_Markdown/*
+!/Temp_Markdown/MyMarkdownTemp.md
+!/Temp_Markdown/图片1.jpg
+!/Temp_Markdown/超链接txt文本.txt
 
-/CalculaionTemp/_Template.tex
-/CalculaionTemp/*.pdf
+/Temp_Calculaion/_Template.tex
+/Temp_Calculaion/*.pdf
 
 *__*
 *Testor*
