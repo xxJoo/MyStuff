@@ -9,11 +9,11 @@ def Calculation():
     resultDict['b'] = b = 2
     resultDict['c'] = c = a + b
 
-    print c
+    print (c)
 
     return resultDict
 
 if __name__ == '__main__':
-    print __name__
+    print (__name__)
     Calculation()
 
