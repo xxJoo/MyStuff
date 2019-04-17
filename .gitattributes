@@ -1,17 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-*.lsp linguist-language = autolisp
+*.lsp linguist-language=autolisp
 
 
 
