@@ -79,14 +79,12 @@
                     ; ; off set from mid-point
                     ; (setq word_location 
                     ;   (polar word_location (+ word_line_angle (* 0.5 pi)) (* textHeight_User 0.5)))
-                    ; (setq word_line_angle_rad (* word_line_angle (/ 180  pi )))
+                    
+                    (setq word_line_angle_degree (* word_line_angle (/ 180  pi )))
                     
                     ; fix the distance to integer
-                    (command "text" "J" "C"
-                        point_mid textHeight_User word_line_angle_rad (fix line_distance))
-                    (command "text" "J" "TC"
-                        point_mid textHeight_User word_line_angle_rad colour)
-
+                    (command "text" "J" "C" point_mid textHeight_User word_line_angle_degree (fix line_distance))
+                    (command "text" "J" "TC" point_mid textHeight_User word_line_angle_degree colour)
                     ; rise the counter i
                     (setq i (+ i 1))
                 ); end while
