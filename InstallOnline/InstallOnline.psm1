@@ -83,3 +83,21 @@ function Install-WinDock {
     }
     end { Invoke-Item $env:temp }
 }
+
+function Install-SublimeText {
+    param (
+        [switch]
+        $Install
+    )
+    begin { Set-SecurityProtocolType }
+    process {
+        Install-SoftWareOnline `
+            -url 'https://download.sublimetext.com/Sublime%20Text%20Build%203207%20x64%20Setup.exe'`
+            -path "$env:temp\Sublime Text Build 3207 x64 Setup.exe"
+        if ($Install) {
+            Start-Process $downLoaded_file
+        }
+    }
+    end { Invoke-Item $env:temp }
+}
+
