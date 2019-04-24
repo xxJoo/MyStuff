@@ -83,3 +83,22 @@ function Install-WinDock {
     }
     end { Invoke-Item $env:temp }
 }
+
+function Install-Vim {
+    param (
+        [switch]
+        $Install
+    )
+    begin { Set-SecurityProtocolType }
+    process {
+        Install-SoftWareOnline `
+            -url 'https://github.com/vim/vim-win32-installer/releases/download/v8.1.1200/gvim_8.1.1200_x64.exe' `
+            -path "$env:temp\gvim_8.1.1200_x64.exe"
+        if ($Install) {
+            Start-Process $downLoaded_file
+        }
+    }
+    end { Invoke-Item $env:temp }
+}
+
+
