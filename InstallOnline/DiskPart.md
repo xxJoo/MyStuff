@@ -1,14 +1,16 @@
 转载地址:http://zhanqiguang.blog.163.com/blog/static/4650796220133288331854/
 
 # 显示磁盘配置的命令
+
 - list disk - 显示磁盘列表。例如，list disk。 
-- list partition - 显示所选磁盘上的分区列表。例如，list partition。 
+- list partition - 显示所选磁盘上的分区列表。例如，list partition。
 - list volume - 显示卷列表。例如，list volume。 
 - list vdisk - 显示虚拟磁盘列表。
 
 使用list命令可显示摘要。要显示更多信息，请先设置焦点，然后使用detail 命令替代list命令。
 
 # 设置焦点的命令
+
 - diskpart - 显示diskpart 版本及当前计算机名称 
 - select disk n - 焦点设置给具有指定windows nt磁盘号n的磁盘，n可以有list disk命令查看。 如果未指定磁盘号，该命令将显示当前处于焦点的磁盘。 
 - select partition n - 将焦点设置给指定分区。如果未指定分区，则显示当前处于焦点的分区。 
@@ -16,16 +18,18 @@
 - select vdisk file=x:\xxx.vhd - 焦点设置给指定的虚拟磁盘文件。
 
 # 管理基本磁盘的命令
+
 - active - 将当前处于焦点的分区设置为“活动的”。此设置通知固件此分区是有效系统分区。 
 - assign [[letter=l]/[mount=path]] - 为当前处于焦点的分区分配驱动器号或装入点。如果未指定驱动器号，则分配下一个可用驱动器号。 
 - create partition primary [size=n] [offset=n] [id=byte/guid] - 在当前驱动器上以一定长度大小和起始地址偏移量创建一个主分区。 如果在mbr磁盘上未指定id字节，此命令将使用类型“0x6”创建分区。可以使用id参数指定分区类型。 如果未在gpt磁盘上指定id guid，此命令将创建msdata分区。可以使用id参数指定任何 guid。 
 - create partition extended [size=n] [offset=n] - 在当前驱动器上以一定长度大小和起始地址偏移量创建一个扩展分区。驱动器必须是 mbr 磁盘。 
-- create partition logical [size=n] [offset=n] - 在当前磁盘的现有扩展分区中以一定长度大小和起始地址偏移量创建一个逻辑驱动器。 驱动器必须是 mbr 磁盘。 
+- create partition logical [size=n] [offset=n] - 在当前磁盘的现有扩展分区中以一定长度大小和起始地址偏移量创建一个逻辑驱动器。 驱动器必须是 mbr 磁盘。
 - delete partition [override] - 删除当前处于焦点的分区。diskpart 禁止删除当前系统、启动或分页卷。 要删除 esp、msr 或已知oem分区，必须指定override参数。 
 - extend [size=n] -当前处于焦点的卷扩展到未分配的连续空间。 未分配空间必须在处于焦点的分区之后（前者的扇区偏移量必须大于后者）。 
 - remove [[letter=l]/[mount=path]/[all]] - 删除当前处于焦点的分区的驱动器号或装入点。如果指定all参数，则删除所有当前驱动器号和装入点。 如果未指定驱动器号或装入点，则删除驱动器号。
 
 # 管理动态磁盘的命令
+
 - active - 将当前处于焦点的卷设置为“活动的”。此设置通知固件此分区是有效系统分区。 
 - add disk=n - 向指定磁盘上的当前处于焦点的卷添加镜像。 
 - assign [[letter=l]/[mount=path]] - 为当前处于焦点的卷分配驱动器号或装入点。如果未指定驱动器号，则分配下一个可用驱动器号。 
@@ -43,12 +47,14 @@
 - retain -准备将动态简单卷用作启动或系统卷
 
 # 转换磁盘的命令
+
 - convert mbr - 将当前磁盘的分区形式设置为 mbr。可以是基本磁盘或动态磁盘。切勿包含任何有效数据分区或卷。 
 - convert gpt - 将当前磁盘的分区形式设置为 gpt。可以是基本磁盘或动态磁盘。切勿包含任何有效数据分区或卷。 
 - convert dynamic - 将基本磁盘改为动态磁盘。磁盘可以包含有效数据分区。 
 - convert basic - 将空的动态磁盘转换为基本磁盘。
 
 # 其他命令
+
 - exit - 停止 diskpart 并将控制权返回给操作系统。 
 - clean [all] - 通过将扇区清零，从当前处于焦点的磁盘删除分区或将卷格式化。 默认情况下，仅改写 mbr 或 gpt 分区信息及任何有关 mbr 磁盘的隐藏扇区信息。 如果指定 all 参数，可将每个扇区都清零，同时可删除驱动器上包含的所有数据。 
 - rem […] - 不执行任何操作，但您可以使用此命令注释脚本文件。 
@@ -58,9 +64,11 @@
 - detach - 分离虚拟磁盘文件。
 
 # 帮助命令
+
 - help - 显示所有命令列表。
 
 # 命令举例
+
 ```diskpart
 x:\sources> diskpart
 
