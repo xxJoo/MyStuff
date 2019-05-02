@@ -1,4 +1,6 @@
+https://baijiahao.baidu.com/s?id=1595427301424851724&wfr=spider&for=pc
 转载地址:http://zhanqiguang.blog.163.com/blog/static/4650796220133288331854/
+
 
 # 显示磁盘配置的命令
 
