@@ -50,3 +50,5 @@ foreach ($des in $destination)
 	# Copy-Item : 对路径“C:\Program Files (x86)\AutoCAD 2008\Fonts\Tssdeng21.shx”的访问被拒绝。
 	Copy-Item -Path $source -Destination $des
 }
+
+Write-Host "Install finish"
