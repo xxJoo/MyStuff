@@ -2,7 +2,7 @@
 this is the vim file.
 ------------------------------------------------------
 vim install
-Linux 安装晚就有
+Linux 安装完就有
 ------------------------------------------------------
 sudo apt-get update
 sudo apt-get upgrade
@@ -118,10 +118,8 @@ this command above works
 ------------------------------------------------------
 what is this
 
-tyum install 
+yum install 
 yum is not installed
-
-
 ------------------------------------------------------
 
 
