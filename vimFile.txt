@@ -111,10 +111,11 @@ this command above can not work
 git clone git@github.com:willclark314/Pyhon.git ~/Python
 this command above works
 ------------------------------------------------------
-
-
+Ubuntu Make
+sudo apt-get install ubuntu-make
 ------------------------------------------------------
-
+visual studio code install
+umake web visual-studio-code
 ------------------------------------------------------
 what is this
 
