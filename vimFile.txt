@@ -13,7 +13,8 @@ sudo apt-get install python3.6
 sudo apt-get install python3
 ------------------------------------------------------
 install pip
-sudo apt install python-pip
+apt-get update
+sudo apt install python3-pip --fix-missing
 ------------------------------------------------------
 git install 
 sudo apt-get install git
