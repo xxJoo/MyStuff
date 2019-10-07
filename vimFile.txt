@@ -119,6 +119,9 @@ sudo apt-get install ubuntu-make
 ------------------------------------------------------
 visual studio code install
 umake web visual-studio-code
+
+sudo apt-get install visual-studio-code
+the code above is not tested
 ------------------------------------------------------
 what is this
 
