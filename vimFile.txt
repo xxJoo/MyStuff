@@ -12,6 +12,9 @@ sudo apt-get install python3.6
 上一句执行不了，执行下面这句上一句执行
 sudo apt-get install python3
 ------------------------------------------------------
+install pip
+sudo apt install python-pip
+------------------------------------------------------
 git install 
 sudo apt-get install git
 ------------------------------------------------------
