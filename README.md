@@ -12,7 +12,11 @@
 [我的TeX模板](Template\CalTemp.tex "模板文件链接")
 [Arbitrary LaTeX reference](http://latex.knobs-dials.com/)
 [Begin LaTeX in minutes](https://github.com/luong-komorebi/Begin-Latex-in-minutes)
-
+- powershell
+[常用技术](PowershellFile.ps1)
+- shell
+[DiskPart的使用](DiskPart.md)
+[net的使用](Net.md)
 # Shortcuts
 - [AutoCAD快捷键](ShortCuts/AutoCADShortCuts.lsp)
 - [Rhino快捷键](RhinoShortCuts.txt)
