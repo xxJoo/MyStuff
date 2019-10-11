@@ -1,6 +1,4 @@
 
-
-
 # profile
 #############################################################
 # 所有用户共有的profile
@@ -29,18 +27,15 @@ True
 # TODO 这句什么意思
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 模块
+#############################################################
+# 查看已导入模块
+Get-Module
+# 查看可用模块
+Get-Module -ListAvailable
+# 导入模块
+# 在模块文件夹父目录下
+Import-Module WindowsVersion
+# 下载和安装
+$currentPath = Get-Location
+Import-Module -Name (Join-Path $currentPath "powershell/WindowsVersion")
