@@ -9,7 +9,7 @@
 [我的Markdown模板](Template/MyMarkdownTemp.md "模板文件链接")
 [我参考的markdown链接](https://www.runoob.com/markdown/md-tutorial.html)
 - LaTeX
-[我的TeX模板](Template\CalTemp.tex "模板文件链接")
+[我的TeX模板](Template/CalTemp.tex "模板文件链接")
 [Arbitrary LaTeX reference](http://latex.knobs-dials.com/)
 [Begin LaTeX in minutes](https://github.com/luong-komorebi/Begin-Latex-in-minutes)
 - powershell
