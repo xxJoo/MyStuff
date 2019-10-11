@@ -83,7 +83,7 @@ title可加可不加
 
 下面是一些例子
 
-[我在ubuntu上的安装文件](vimFile.txt "我在ubuntu上的安装文件")
+[我在ubuntu上的安装文件](../vimFile.txt "我在ubuntu上的安装文件")
 
 [请查询百度](http://www.baidu.com "百度官网")
 
