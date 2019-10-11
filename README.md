@@ -21,8 +21,9 @@
 [DiskPart的使用](DiskPart.md)
 [net的使用](Net.md)
 # Shortcuts
-- [AutoCAD快捷键](ShortCuts/AutoCADShortCuts.lsp)
-- [Rhino快捷键](RhinoShortCuts.txt)
+- [AutoCAD快捷键](ShortCuts/ShortCuts_AutoCAD.lsp)
+- [3D3S快捷键](ShortCuts/ShortCuts_3D3S.lsp)
+- [Rhino快捷键](ShortCuts/ShortCuts_Rhino.txt)
   
 # 安装配置
 - [ubuntu上程序安装文件](vimFile.txt)
