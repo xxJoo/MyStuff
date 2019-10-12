@@ -93,7 +93,7 @@ PlugInManager ! _OptionsPage _PlugIns
 
 ; C       '_SelCrossing
 A         '_Arc
-AF        '_MatchProperties
+AF        '-_MatchProperties
 AV        '_Divide
 C         '_Copy
 COff      '_CurvatureGraphOff
