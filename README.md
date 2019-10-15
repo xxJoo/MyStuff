@@ -5,6 +5,9 @@
 ## 阅读参考
 - [free-programming-books](https://ebookfoundation.github.io/free-programming-books/free-programming-books.html "很全的语言链接")
 ## 常用工具
+- git
+  - [我的笔记](my_git.md)
+  - [Git home page](https://git-scm.com/)
 - Markdown
   - [我的Markdown模板](Template/MyMarkdownTemp.md "模板文件链接")
   - [我参考的markdown链接](https://www.runoob.com/markdown/md-tutorial.html)
@@ -47,6 +50,7 @@
   
 ## windows 软件
 - [windows 软件配置](windows_softwares.txt)
+- [AutoCAD 软件配置](autocad/object_map/CAD配置.md)
 
 ## ubuntu 软件
 - [ubuntu 上程序安装文件](vimFile.txt)
