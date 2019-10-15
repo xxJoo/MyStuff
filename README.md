@@ -23,6 +23,22 @@
 - shell
   - [DiskPart的使用](DiskPart.md)
   - [net的使用](Net.md)
+- AutoCAD
+  - [autocad helps list](https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/Where-to-find-the-online-help-for-Autodesk-AutoCAD.html)
+  - [CAD Management and Developer Home Page](http://help.autodesk.com/view/ACD/2016/ENU/files/homepage_dev.htm)
+    - General Resources
+    - AutoLISP/DCL
+      - [Functions Reference (AutoLISP)](http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-4CEE5072-8817-4920-8A2D-7060F5E16547)
+    - What's New or Changed
+    - ActiveX
+      - [Reference Guide (ActiveX)](http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-5D302758-ED3F-4062-A254-FB57BAB01C44)
+      - [Object Model (ActiveX)](http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-A809CD71-4655-44E2-B674-1FE200B9FE30)
+      - [ActiveX Developer's Guide (ActiveX/VBA)](http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-36BF58F3-537D-4B59-BEFE-2D0FEF5A4443)
+    - Managed .NET/ObjectARX/JavaScript
+    - Connect
+  - [晓东CAD家园](http://www.xdcad.net/)
+  - [明经CAD社区](http://www.mjtd.com/)
+
 # 软件配置
 ## Shortcuts
 - [AutoCAD快捷键](ShortCuts/ShortCuts_AutoCAD.lsp)
