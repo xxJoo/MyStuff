@@ -92,6 +92,8 @@
 ; vlax-vbObject          9          对象
 ; vlax-vbBoolean        11          布尔类型
 ; vlax-vbVariant        12          变体
+; Variant type 19 is a an OLE_COLOR, which can't be represented
+; by a 16 bit signed integer (vlax-vbInteger)
 (setq p1 (vlax-make-safearray vlax-vbDouble '(0 . 2))) 
 ; 该例创建一个名字为p1的一维数组
 ; 下限标为0，上限为2

@@ -3,10 +3,13 @@
 
 按照[Object Model (ActiveX)](http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-A809CD71-4655-44E2-B674-1FE200B9FE30)的模型，cad的对象结构如下
 
+[我的AutoCAD配置](AutoCAD_Settings.lsp)
+
+
 - Application
   - Preferences
     - [PreferncesDisply](PreferncesDisply.md)
-    - PreferencesDrafting
+    - [PreferencesDrafting](PreferencesDrafting.md)
     - PreferencesFiles
     - PreferencesOpenSave
     - PreferencesOutput
