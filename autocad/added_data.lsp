@@ -24,16 +24,20 @@
 ;      (vlax-make-variant [值] [类型])
 ;   表10-2 预定义的变体类型及其含义
 ;   类型                     值                含义
-;   Vlax-vbEmpty        预定义的变体 0   未初始化（默认值）
-;   Vlax-vbNull               1             空数据
-;   Vlax-vbInteger            2             整数型
-;   Vlax-vbLong               3            长整数型
-;   Vlax-vbSingle             4           单精度浮点数
-;   Vlax-vbDouble             5           双精度浮点数
-;   Vlax-vbString             8              字符串
-;   Vlax-vbObject             9              对象
-;   Vlax-vbBoolean            11             布尔值
-;   Vlax-vbArray             8192            数组
+;   vlax-vbEmpty        预定义的变体 0   未初始化（默认值）
+;   vlax-vbNull               1             空数据
+;   vlax-vbInteger            2             整数型
+;   vlax-vbLong               3            长整数型
+;   vlax-vbSingle             4           单精度浮点数
+;   vlax-vbDouble             5           双精度浮点数
+;   vlax-vbString             8              字符串
+;   vlax-vbObject             9              对象
+;   vlax-vbBoolean            11             布尔值
+;   vlax-vbArray             8192            数组
+;   OLE_COLOR                19              OLE_COLOR
+; Variant type 19 is a an OLE_COLOR, which can't be represented
+; by a 16 bit signed integer (vlax-vbInteger)
+; (vlax-variant-change-type OLE_COLOR vlax-vbLong)
 
 ;   表10-3 LISP数据类型与默认的ActiveX数据类型对照表 
 ;   LISP数据值的类型            默认的数据类型
@@ -92,8 +96,7 @@
 ; vlax-vbObject          9          对象
 ; vlax-vbBoolean        11          布尔类型
 ; vlax-vbVariant        12          变体
-; Variant type 19 is a an OLE_COLOR, which can't be represented
-; by a 16 bit signed integer (vlax-vbInteger)
+
 (setq p1 (vlax-make-safearray vlax-vbDouble '(0 . 2))) 
 ; 该例创建一个名字为p1的一维数组
 ; 下限标为0，上限为2
