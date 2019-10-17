@@ -26,6 +26,11 @@
 - shell
   - [DiskPart的使用](DiskPart.md)
   - [net的使用](Net.md)
+- .NET
+  - [.NET](https://dotnet.microsoft.com/)
+  - [.NET 文档](https://docs.microsoft.com/zh-cn/dotnet/)
+  - [Excel](https://developer.microsoft.com/zh-CN/excel/)
+  - [Excel 文档](https://developer.microsoft.com/zh-CN/excel/docs)
 - AutoCAD
   - [autocad helps list](https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/Where-to-find-the-online-help-for-Autodesk-AutoCAD.html)
   - [CAD Management and Developer Home Page](http://help.autodesk.com/view/ACD/2016/ENU/files/homepage_dev.htm)

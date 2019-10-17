@@ -13,7 +13,6 @@ Sub 插入批注图片()
         .Shape.Fill.UserPicture Pict
     End With
     
-
 End Sub
 
 
