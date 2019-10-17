@@ -266,7 +266,3 @@
 ; 将该圆转换为VLA对象
 (setq mycircle(vlax-ename->vla-object ec))
 ; #<VLA-OBJECT IAcadLine 011bf2d4>
-
-
-
-

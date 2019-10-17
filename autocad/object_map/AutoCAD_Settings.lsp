@@ -32,7 +32,7 @@
 (vla-put-DisplayLayoutTabs ACADPref :vlax-true)
 ;; Reset DisplayLayoutTabs to its original value
 ; (vla-put-DisplayLayoutTabs ACADPref originalDisplayLayoutTabs)
---------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------
 ;; Retrieve the current DisplayScreenMenu value
 (setq currDisplayScreenMenu (vla-get-DisplayScreenMenu ACADPref))
 ;; Change the value for DisplayScreenMenu
@@ -40,7 +40,7 @@
 (vla-put-DisplayScreenMenu ACADPref :vlax-false)
 ;; Reset DisplayScreenMenu to its original value
 ; (vla-put-DisplayScreenMenu ACADPref currDisplayScreenMenu)
---------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------
 ;; Set PaperSpace/Layout current
 (vla-put-ActiveSpace doc acPaperSpace)
 ;; Retrieve the current GraphicsWinLayoutBackgrndColor value
@@ -49,4 +49,4 @@
 (vla-put-GraphicsWinLayoutBackgrndColor ACADPref (vlax-make-variant vbBlack))
 ;; Reset GraphicsWinLayoutBackgrndColor to its original value
 ; (vla-put-GraphicsWinLayoutBackgrndColor ACADPref currGrphcWnLytBckgrndColor)
---------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------
