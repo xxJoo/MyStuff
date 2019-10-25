@@ -266,6 +266,7 @@
 ; 将该圆转换为VLA对象
 (setq mycircle(vlax-ename->vla-object ec))
 ; #<VLA-OBJECT IAcadLine 011bf2d4>
+
 ; 用 GetBoundingBox 获取该圆边界框的左下角点和右上角点
 (vla-GetBoundingBox mycircle 'minpoint 'maxpoint)
 ; nil
