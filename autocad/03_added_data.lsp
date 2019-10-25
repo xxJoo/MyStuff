@@ -266,7 +266,29 @@
 ; 将该圆转换为VLA对象
 (setq mycircle(vlax-ename->vla-object ec))
 ; #<VLA-OBJECT IAcadLine 011bf2d4>
+; 用 GetBoundingBox 获取该圆边界框的左下角点和右上角点
+(vla-GetBoundingBox mycircle 'minpoint 'maxpoint)
+; nil
+(setq p1(vlax-safearray->list minpoint))
+; (1.42099e+006 -1.1149e+006 -1.0e-008)
+(setq p2(vlax-safearray->list maxpoint))
+; (1.42176e+006 -1.11413e+006 1.0e-008)
 
+; 判断某方法或属性是否可应用于某对象
 
+; 判断某方法是否可应用于某对象
+; (vlax-method-applicable-p VLA对象 method)
+(vlax-method-applicable-p mycircle "copy")
+; T
+(vlax-method-applicable-p mycircle "AddBox")
+; nil
+; 判断某对象是否具有某属性
+; (vlax-property-available-p VLA对象 property [check-modify])
+(vlax-property-available-p mycircle "Color")
+; T
+(vlax-property-available-p mycircle "Center")
+; T
+(vlax-property-available-p mycircle "Center" T)
+; T 可以被修改
 
 

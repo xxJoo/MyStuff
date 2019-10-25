@@ -1,0 +1,632 @@
+
+
+
+! 读取 3D3S 导出的文件
+/INPUT,ChangShou,mac,C:\Users\dell\Desktop\,1,0
+    ! /INPUT, Fname, Ext, Dir, LINE, LOG
+    ! Switches the input file for the commands that follow.
+    ! Fname
+    ! File name and directory path (248 characters maximum,
+    ! including the characters needed for the directory path).
+    ! An unspecified directory path defaults to the working directory;
+    ! in this case, you can use all 248 characters for the file name.
+    ! The file name defaults to the current Jobname if Ext is specified.
+    ! Ext
+    ! Filename extension (eight-character maximum).
+    ! Dir
+    ! Directory path (64 characters maximum). Defaults to current directory.
+    ! LINE
+    ! A value indicating either a line number in the file
+    ! or a user-defined label in the file from which to begin reading the
+    ! input file.
+    ! (blank), 0, or 1  Begins reading from the top of the file (default).
+    ! LINE_NUMBER  Begins reading from the specified line number in the file.
+    ! :label  Begins reading from the first line beginning
+    ! with the matching user-defined label :label
+    ! (beginning with a colon (:), 8 characters maximum).
+    ! LOG
+    ! Indicates whether secondary input from this command should be recorded
+    ! in the command log (File.LOG) and the database log:
+    ! 0  Record only the /INPUT command on the log (default).
+    ! 1  Record commands in the specified secondary file as they are executed.
+
+! 求解一次
+/SOLU
+ALLSEL
+RESCONTROL, LINEAR, ALL, 1
+    ! ------------------------------------------------------------------------
+    ! RESCONTROL, Action, Ldstep, Frequency, MAXFILES
+    ! Controls file writing for multiframe restarts.
+    ! ------------------------------------------------------------------------
+    ! Action
+    ! Specify the command action.
+    ! ------------------------------------------------------------------------
+    ! DEFINE
+    !  — 	
+    ! Issuing the command will specify how frequently the .Xnnn restart files 
+    ! are written for a load step (default).
+    ! ***********************************************************************
+    ! FILE_SUMMARY
+    !  — 	
+    ! Issuing the command will print the substep and load step information 
+    ! for all .Xnnn files for the current job name in the current directory.
+    ! If this option is specified, all other arguments are ignored.
+    ! ***********************************************************************
+    ! STATUS
+    !  — 	
+    ! Issuing the command will list the current status in the tables of restart
+    ! control specified earlier by RESCONTROL. If this option is specified,
+    ! all other arguments are ignored.
+    ! ***********************************************************************
+    ! NORESTART
+    !  — 	
+    ! Issuing the command will clean up some of the restart files after a
+    ! Distributed ANSYS solution. The host process will not have the following
+    ! files in the working directory at the end of the run: .ESAV, .OSAV,
+    ! .Xnnn, .RDB, .LDHI. The slave processes will not have the following
+    ! files in the working directory at the end of the run: .ESAV, .OSAV,
+    ! .Xnnn, .RST (or .RTH, etc.). Some of the restart files will never be
+    ! written, some are removed upon leaving /SOLU (e.g., FINISH, etc.),
+    ! and some are removed upon exiting the program. This option is useful
+    ! for cleaning up files written by all of the Distributed ANSYS processes,
+    ! particularly when you know that these restart files will not be needed
+    ! later on. If this option is specified, all other arguments are ignored.
+    ! 
+    ! If this option is used in shared-memory parallel ANSYS, most of the
+    ! restart files in the working directory are removed. It has the same
+    ! effect as issuing RESCONTROL,,NONE.
+    ! ***********************************************************************
+    ! LINEAR
+    !  — 	
+    ! Issuing the command will specify the same actions as Action = DEFINE.
+    ! However, this option is intended for linear static applications.
+    ! For a linear static analysis, the restart capability is normally
+    ! not needed. It is typically needed when a subsequent linear perturbation
+    ! analysis is desired. By default, none of the restart files are written
+    ! for a linear static analysis.
+    ! ------------------------------------------------------------------------
+    ! Ldstep
+    ! Specify how the .Xnnn files are written.
+    ! ------------------------------------------------------------------------
+    ! ALL
+    !  — 	
+    ! The .Xnnn files are written at the same frequency for all load steps.
+    ! ***********************************************************************
+    ! LAST
+    !  — 	
+    ! Write the .Xnnn files for the last load step only (default for
+    ! nonlinear static and full transient analyses). If this option is
+    ! specified, results are written for the last substep and the remaining
+    ! arguments are ignored.
+    ! ***********************************************************************
+    ! N
+    !  — 	
+    ! Write the .Xnnn files at the frequency indicated only for load
+    ! step N. Other load steps will be written at the default frequency
+    ! or at a frequency defined by a previous RESCONTROL,DEFINE,ALL,
+    ! Frequency command.
+    ! ***********************************************************************
+    ! NONE
+    !  — 	
+    ! No multiframe restart files (.RDB [restart database file],
+    ! .LDHI [load history file], .Xnnn) will be created. If you specify
+    ! this option, all other arguments will be ignored.
+    ! 
+    ! For nonlinear static and static and full transient analyses, this
+    ! option allows a restart to be done at the last or abort point using
+    ! the same procedure as in ANSYS 5.5 or earlier (using the .EMAT,
+    ! .ESAV or .OSAV, and .DB files).
+    ! 
+    ! For mode-superposition transient analyses, this option allows a
+    ! restart from the last point using the .RDSP file and the .DB file
+    ! (default for mode-superposition analysis).
+    ! 
+    ! ------------------------------------------------------------------------
+    ! Frequency
+    ! Frequency at which the .Xnnn files are written.
+    ! ------------------------------------------------------------------------
+    ! NONE
+    !  — 	
+    ! Do not write any .Xnnn files for this load step (default for
+    ! mode superposition analysis).
+    ! ***********************************************************************
+    ! LAST
+    !  — 	
+    ! Write the .Xnnn files for the last substep of the load step
+    ! only (default for nonlinear static and full transient analyses).
+    ! ***********************************************************************
+    ! N
+    !  — 	
+    ! If N is positive, write the .Xnnn file every Nth substep of
+    ! a load step. If N is negative, write N equally spaced .Xnnn files
+    ! within a load step.
+    ! 
+    ! In nonlinear static and full transient analyses, negative N
+    ! is valid only when AUTOTS,ON.
+    ! 
+    ! In mode-superposition analyses, negative N is always valid.
+    ! ------------------------------------------------------------------------
+    ! MAXFILES
+    ! Maximum number of .Xnnn files to save for Ldstep.
+    ! ***********************************************************************
+    ! -1
+    !  — 	
+    ! Overwrite existing .Xnnn files (default). The total maximum
+    ! number of .Xnnn files for one run is 999. If this number is
+    ! reached before the analysis is complete, the program will reset
+    ! the .Xnnn file numbering back to 1 and continue to write .Xnnn
+    ! files; the program keeps the newest 999 restart files and overwrites
+    ! the oldest restart files.
+    ! ***********************************************************************
+    ! 0
+    !  — 	
+    ! Do not overwrite any existing .Xnnn files. The total maximum
+    ! number of .Xnnn files for one run is 999. If this number is
+    ! reached before the analysis is complete, the analysis continues
+    ! but no longer writes any .Xnnn files.
+    ! ***********************************************************************
+    ! N
+    !  — 	
+    ! The maximum number of .Xnnn files to keep for each load step.
+    ! When N .Xnnn files have been written for a load step, the program
+    ! overwrites the first .Xnnn file of that load step for subsequent
+    ! substeps. The value of N can not exceed 999. If a total of 999
+    ! restart files is reached before the analysis is complete,
+    ! the analysis continues but no longer writes any .Xnnn files.
+    ! ------------------------------------------------------------------------
+    ! Command Default
+    ! If the RESCONTROL command is not issued during a structural analysis,
+    ! the .RDB and .LDHI files will be written as described in Restarting
+    ! an Analysis in the Basic Analysis Guide.
+    ! 
+    ! In nonlinear static and full transient analyses, the default behavior
+    ! is multiframe restart (command default RESCONTROL,DEFINE,LAST,LAST).
+    ! The .Rnnn file will be written at the last substep of the last load
+    ! step by default. A .Rnnn file will also be written at the iteration
+    ! prior to the abort point of the run if a Jobname.ABT file was used
+    ! in batch mode or by pressing the Stop button in the GUI, or if the
+    ! job terminates because of a failure to reach convergence or some other
+    ! solution error. No information at the aborted substep will be saved
+    ! to the .Rnnn file.
+    ! ------------------------------------------------------------------------
+    ! Notes
+    ! Multiframe restart files are indicated here as .Xnnn files. They
+    ! correspond to .Rnnn files for nonlinear static and full transient
+    ! analyses, and .Mnnn files for mode-superposition analyses. The total
+    ! number of restart files for any analysis cannot exceed 999 (e.g.,
+    ! Jobname.R001 to Jobname.R999).
+    ! 
+    ! This command sets up the restart parameters for a multiframe restart,
+    ! which allows you to restart an analysis from any load step and
+    ! substep for which there is a .Xnnn file. You can perform a multiframe
+    ! restart for static and transient (full or mode-superposition method)
+    ! analyses only. For more information about multiframe restarts and
+    ! descriptions of the contents of the files used, see Restarting an
+    ! Analysis in the Basic Analysis Guide.
+    ! 
+    ! If you have many substeps for each load step, and are writing .Xnnn
+    ! files frequently, you may want to use MAXFILES to limit the number
+    ! of .Xnnn saved, since these files can fill up your disk quickly.
+    ! You may specify MAXFILES and Frequency for individual load steps.
+    ! These arguments will take on the default value or the value defined
+    ! by RESCONTROL,,ALL,Frequency,MAXFILES if they are not explicitly
+    ! defined for a specific load step.
+    ! 
+    ! You can specify a maximum of ten load steps; that is, you can issue
+    ! the RESCONTROL,,N command a maximum of ten times. Specified load
+    ! steps cannot be changed in a restart.
+    ! ------------------------------------------------------------------------
+
+
+
+SOLVE
+    ! ------------------------------------------------------------------------
+    ! SOLVE, Action
+    ! Starts a solution.
+    ! ------------------------------------------------------------------------
+    ! Action
+    ! Action to be performed on solve (used only for linear perturbation
+    ! analyses).
+    ! ------------------------------------------------------------------------
+    ! ELFORM
+    !  — 	
+    ! Reform all appropriate element matrices in the first phase of a linear
+    ! perturbation analysis.
+    ! ------------------------------------------------------------------------
+
+
+! ELFORM
+EMODIF
+    ! ------------------------------------------------------------------------
+    ! EMODIF, IEL, STLOC, I1, I2, I3, I4, I5, I6, I7, I8
+    ! Modifies a previously defined element.
+    ! ------------------------------------------------------------------------
+    ! IEL
+    ! Modify nodes and/or attributes for element number IEL. If ALL, modify 
+    ! all selected elements [ESEL]. If IEL = P, graphical picking is enabled
+    ! and all remaining command fields are ignored (valid only in the GUI).
+    ! A component name may also be substituted for IEL.
+    ! ------------------------------------------------------------------------
+    ! STLOC
+    ! Starting location (n) of first node to be modified or the attribute
+    ! label. If n, modify element node positions n, n+1, etc. (n = 1 to 20).
+    ! For example, if STLOC = 1, I1 refers to the first node, I2, the second,
+    ! etc. If STLOC = 9, I1 refers to the ninth node, I2, the tenth, etc.
+    ! Attributes are also modified to the currently specified values
+    ! (use -n to modify only nodes and not attributes). If zero, modify only
+    ! the attributes to the currently specified values. If MAT, TYPE, REAL,
+    ! ESYS, or SECNUM, modify only that attribute to the I1 value.
+    ! ------------------------------------------------------------------------
+    ! I1, I2, I3, . . . , I8
+    ! Replace the previous node numbers assigned to this element with these
+    ! corresponding values. A (blank) retains the previous value (except in
+    ! the I1 field, which resets the STLOC node number to zero). For
+    ! attributes, replace the existing value with the I1 value (or the
+    ! ! default if I1 is zero or blank).
+    ! ------------------------------------------------------------------------
+    ! Notes
+    ! The nodes and/or attributes (MAT, TYPE, REAL, ESYS, and SECNUM values)
+    ! of an existing element may be changed with this command.
+    ! ------------------------------------------------------------------------
+
+
+
+
+FINISH
+
+! 求解线性稳定
+/SOLU
+ANTYPE, STATIC, RESTART,,,PERTURB
+    ! ANTYPE, Antype, Status, LDSTEP, SUBSTEP, Action
+    ! Antype
+    ! STATIC,BUCKLE,MODAL,HARMIC,TRANS,SUBSTR,SPECTR
+    ! Status
+    ! NEW, RESTART, VTREST
+    ! Action
+    ! CONTINUE, ENDSTEP, RSTCREATE, PERTURB
+    ! ------------------------------------------------------------------------
+    ! ANTYPE, Antype, Status, LDSTEP, SUBSTEP, Action
+    ! Specifies the analysis type and restart status.
+    ! ------------------------------------------------------------------------
+    ! 
+    ! Antype
+    ! 
+    ! Analysis type
+    ! (defaults to the previously specified analysis type,
+    ! or to STATIC if none specified):
+    ! 
+    ! ***********************************************************************
+    ! STATIC or 0
+    !  —  
+    ! Perform a static analysis. Valid for all degrees of freedom.
+    ! ***********************************************************************
+    ! BUCKLE or 1
+    !  —  
+    ! Perform a buckling analysis.
+    ! Implies that a previous static solution was performed
+    ! with prestress effects calculated (PSTRES,ON).
+    ! Valid for structural degrees of freedom only.
+    ! ***********************************************************************
+    ! MODAL or 2
+    !  —  
+    ! Perform a modal analysis.
+    ! Valid for structural and fluid degrees of freedom.
+    ! ***********************************************************************
+    ! HARMIC or 3
+    !  —  
+    ! Perform a harmonic analysis.
+    ! Valid for structural, fluid, magnetic,
+    ! and electrical degrees of freedom.
+    ! ***********************************************************************
+    ! TRANS or 4
+    !  —  
+    ! Perform a transient analysis.
+    ! Valid for all degrees of freedom.
+    ! ***********************************************************************
+    ! SUBSTR or 7
+    !  —  
+    ! Perform a substructure analysis.
+    ! Valid for all degrees of freedom.
+    ! ***********************************************************************
+    ! SPECTR or 8
+    !  —  
+    ! Perform a spectrum analysis.
+    ! Implies that a previous modal analysis was performed.
+    ! Valid for structural degrees of freedom only.
+    ! ------------------------------------------------------------------------
+    ! 
+    ! Status
+    ! 
+    ! Specifies the status of the analysis (new or restart):
+    ! 
+    ! ***********************************************************************
+    ! NEW
+    !  —  
+    ! Specifies a new analysis (default).
+    ! If NEW, the remaining fields on this command are ignored.
+    ! 
+    ! ***********************************************************************
+    ! RESTART
+    !  —  
+    ! Specifies a restart of a previous analysis.
+    ! Valid for static, modal, and transient
+    ! (full or mode-superposition method) analyses.
+    ! For more information about restarting static and transient analyses,
+    ! see Multiframe Restart in the Basic Analysis Guide.
+    ! For more information on restarting a modal analysis,
+    ! see Modal Analysis Restart in the Basic Analysis Guide.
+    ! 
+    ! Multiframe restart is also valid for harmonic analysis,
+    ! but is limited to 2-D magnetic analysis only.
+    ! 
+    ! A substructure analysis (backsubstitution method only)
+    ! can be restarted for the purpose of generating additional load vectors.
+    ! For more information, see the SEOPT command and Applying Loads
+    ! and Creating the Superelement Matrices in the Advanced Analysis Guide.
+    ! 
+    ! ***********************************************************************
+    ! VTREST
+    !  —  
+    ! Specifies the restart of a previous VT Accelerator analysis.
+    ! Valid only with Antype = STATIC, HARMIC, or TRANS.
+    ! For more information, see VT Accelerator Re-run
+    ! in the Basic Analysis Guide.
+    ! ------------------------------------------------------------------------
+    ! 
+    ! LDSTEP
+    ! 
+    ! Specifies the load step at which a multiframe restart begins.
+    ! 
+    ! For full transient and nonlinear static analyses,
+    ! the default is the highest load step number found in the
+    ! Jobname.Rnnn files for the current jobname in the current directory.
+    ! 
+    ! For mode-superposition transient analyses, the default is none.
+    ! ------------------------------------------------------------------------
+    ! 
+    ! SUBSTEP
+    ! 
+    ! Specifies the substep at which a multiframe restart begins.
+    ! 
+    ! For full transient and nonlinear static analyses,
+    ! the default is the highest substep number found
+    ! for the specified LDSTEP in the
+    ! Jobname.Rnnn files in the current directory.
+    ! 
+    ! For mode-superposition transient analyses, the default is none.
+    ! ------------------------------------------------------------------------
+    ! Action
+    ! Specifies the manner of a multiframe restart.
+    ! ***********************************************************************
+    ! CONTINUE
+    !  —  
+    ! The program continues the analysis
+    ! based on the specified LDSTEP and SUBSTEP (default).
+    ! The current load step is continued.
+    ! If the end of the load step is encountered in the 
+    ! .Rnnn file, a new load step is started.
+    ! The program deletes all .Rnnn files,
+    ! or .Mnnn files for mode-superposition transient analyses,
+    ! beyond the point of restart and updates the 
+    ! .LDHI file if a new load step is encountered.
+    ! ***********************************************************************
+    ! ENDSTEP
+    !  —  
+    ! At restart,
+    ! force the specified load step (LDSTEP)
+    ! to end at the specified substep (SUBSTEP),
+    ! even though the end of the current load step has not been reached.
+    ! At the end of the specified substep,
+    ! all loadings are scaled to the level
+    ! of the current ending and stored in the .LDHI file.
+    ! A run following this ENDSTEP starts a new load step.
+    ! This capability allows you to change the load level
+    ! in the middle of a load step.
+    ! The program updates the .LDHI file and deletes all .Rnnn files,
+    ! or .Mnnn files for mode-superposition transient analyses,
+    ! beyond the point of ENDSTEP.
+    ! The .Rnnn or .Mnnn file at the point of ENDSTEP are rewritten
+    ! to record the rescaled load level.
+    ! ***********************************************************************
+    ! RSTCREATE
+    !  —  
+    ! At restart, retrieve information to be written
+    ! to the results file for the specified load step (LDSTEP)
+    ! and substep (SUBSTEP).
+    ! Be sure to use OUTRES to write the results to the results file.
+    ! This action does not affect the .LDHI or .Rnnn files.
+    ! Previous items stored in the results file at and beyond the point
+    ! of RSTCREATE are deleted. This option cannot be used
+    ! to restart a mode-superposition transient analysis.
+    ! ***********************************************************************
+    ! PERTURB
+    !  —  
+    ! At restart, a linear perturbation analysis
+    ! (static, modal, buckling, or full harmonic)
+    ! is performed for the specified load step (LDSTEP) and substep (SUBSTEP).
+    ! This action does not affect the .LDHI, .Rnnn, or .RST files.
+    ! 
+    ! For a linear perturbation analysis,
+    ! set Action = PERTURB; otherwise, the existing restart files,
+    ! such as the .LDHI, .Rnnn, or .RST file,
+    ! may be modified by the linear perturbation analysis.
+    ! Issue the PERTURB command to indicate the desired analysis type
+    ! (STATIC, MODAL, BUCKLE, or HARMONIC).
+    ! ------------------------------------------------------------------------
+
+! 
+PERTURB,BUCKLE,,,ALLKEEP
+! 预应力
+! PSTRES, ON
+    ! ------------------------------------------------------------------------
+    ! PSTRES, Key
+    ! Specifies whether prestress effects are calculated or included.
+    ! ------------------------------------------------------------------------
+    ! Key
+    ! Prestress key:
+    ! ***********************************************************************
+    ! OFF
+    !  —  
+    ! Do not calculate (or include) prestress effects (default).
+    ! ***********************************************************************
+    ! ON
+    !  —  
+    ! Calculate (or include) prestress effects.
+    ! ------------------------------------------------------------------------
+
+! 大变形
+! NLGEOM,ON
+    ! ------------------------------------------------------------------------
+    ! NLGEOM, Key
+    ! Includes large-deflection effects in a static or full transient analysis.
+    ! ------------------------------------------------------------------------
+    ! 
+    ! Key
+    ! Large-deflection key:
+    ! ***********************************************************************
+    ! OFF
+    !  — 	
+    ! Ignores large-deflection effects (that is, a small-deflection analysis 
+    ! is specified). This option is the default.
+    ! ***********************************************************************
+    ! ON
+    !  — 	
+    ! Includes large-deflection (large rotation) effects or large strain 
+    ! effects, according to the element type.
+    ! ------------------------------------------------------------------------
+    ! Command Default
+    ! Large-deflection effects are ignored.
+    ! ------------------------------------------------------------------------
+    ! Notes
+    ! Large-deflection effects are categorized as either large deflection 
+    ! (or large rotation) or large strain, depending on the element type. 
+    ! These are listed (if available) under Special Features in the input data 
+    ! table for each element in the Element Reference. 
+    ! When large deflection effects are included (NLGEOM,ON), 
+    ! stress stiffening effects are also included automatically.
+    ! 
+    ! If used during the solution (/SOLU), this command is valid only 
+    ! within the first load step.
+    ! 
+    ! In a large-deflection analysis, pressure loads behave differently 
+    ! than other load types. For more information, see Load Direction 
+    ! in a Large-Deflection Analysis.
+    ! 
+    ! The gyroscopic matrix (that occurs due to rotational angular velocity) 
+    ! does not support large-deflection effects. 
+    ! The theoretical formulations for the gyroscopic matrix support 
+    ! small deflection (linear formulation) only.
+    ! 
+    ! This command is also valid in PREP7.
+    ! 
+    ! Product Restrictions
+    ! In ANSYS Professional NLT, large deflection effects should not be 
+    ! turned on if 2-D solid (PLANEn) or 3-D solid (SOLIDn) elements 
+    ! are defined. ANSYS Professional NLS supports NLGEOM,ON for plane 
+    ! and solid elements.
+    ! ------------------------------------------------------------------------
+
+! 计算子步
+NSUBST, 100
+    ! ------------------------------------------------------------------------
+    ! NSUBST, NSBSTP, NSBMX, NSBMN, Carry
+    ! Specifies the number of substeps to be taken this load step.
+    ! ------------------------------------------------------------------------
+! 所有计算结果 写入db文件
+! OUTRES,ALL,ALL
+    ! ------------------------------------------------------------------------
+    ! OUTRES, Item, Freq, Cname, -- , NSVAR
+    ! Controls the solution data written to the database.
+    ! ------------------------------------------------------------------------
+SOLVE,ELFORM
+BUCOPT,LANB,3
+MXPAND,3
+FINISH
+
+
+
+
+
+
+! 选择并检查
+ALLSEL
+CHECK,ESEL
+    ! ------------------------------------------------------------------------
+    ! CHECK, Sele, Levl
+    ! Checks current database items for completeness.
+    ! ------------------------------------------------------------------------
+    ! Sele
+    ! Specifies which elements are to be checked:
+    ! ***********************************************************************
+    ! (blank)
+    !  — 	
+    ! Check all data.
+    ! ***********************************************************************
+    ! ESEL
+    !  — 	
+    ! Check only elements in the selected set and unselect any elements 
+    ! not producing geometry check messages. The remaining elements (those 
+    ! producing check messages) can then be displayed and corrected. A null 
+    ! set results if no elements produce a message. Issue ESEL,ALL to select 
+    ! all elements before proceeding.
+    ! ------------------------------------------------------------------------
+    ! Levl
+    ! Used only with Sele = ESEL:
+    ! ***********************************************************************
+    ! WARN
+    !  — 	
+    ! Select elements producing warning and error messages.
+    ! ***********************************************************************
+    ! ERR
+    !  — 	
+    ! Select only elements producing error messages (default).
+    ! ------------------------------------------------------------------------
+
+! 后处理
+/POST1
+
+
+SET, 1, 85
+    ! ------------------------------------------------------------------------
+    ! SET, Lstep, Sbstep, Fact, KIMG, TIME, ANGLE, NSET, ORDER
+    ! Defines the data set to be read from the results file.
+    ! ------------------------------------------------------------------------
+    ! Lstep
+    ! Load step number of the data set to be read (defaults to 1):
+    ! ------------------------------------------------------------------------
+    ! N
+    !  — 	
+    ! Read load step N.
+    ! ***********************************************************************
+    ! FIRST
+    !  — 	
+    ! Read the first data set (Sbstep and TIME are ignored).
+    ! ***********************************************************************
+    ! LAST
+    !  — 	
+    ! Read the last data set (Sbstep and TIME are ignored).
+    ! ***********************************************************************
+    ! NEXT
+    !  — 	
+    ! Read the next data set (Sbstep and TIME are ignored). If at the last 
+    ! data set, the first data set will be read as the next.
+    ! ***********************************************************************
+    ! PREVIOUS
+    !  — 	
+    ! Read the previous data set (Sbstep and TIME are ignored). If at the 
+    ! first data set, the last data set will be read as the previous.
+    ! ***********************************************************************
+    ! NEAR
+    !  — 	
+    ! Read the data set nearest to TIME (Sbstep is ignored). If TIME is 
+    ! blank, read the first data set.
+    ! ***********************************************************************
+    ! LIST
+    !  — 	
+    ! Scan the results file and list a summary of each load step.
+    ! (KIMG, TIME, ANGLE, and NSET are ignored.)
+    ! ------------------------------------------------------------------------
+
+
+
+PLDISP
