@@ -2,10 +2,10 @@
 # https://www.cnblogs.com/kevingrace/p/5690241.html
 
 # Test script
-/.Testors/*
-# VS settings
+/.Testers/*
+# visual studio settings
 /.vs/
-# VS code settings
+# visual studio code settings
 /.vscode/
 
 
