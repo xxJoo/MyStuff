@@ -54,9 +54,10 @@
 - [Rhino快捷键](ShortCuts/ShortCuts_Rhino.txt)
   
 ## windows 软件
-- [windows 软件配置](windows_softwares.txt)
-- [AutoCAD 软件配置](autocad/map/CAD配置.md)
-- [VS Code配置](VS_Code.md)
+- [windows 软件配置](windows_softwares.md)
+- [AutoCAD 软件配置](CAD配置.md)
+- [VS Code 配置](VS_Code.md)
+- [git 配置](my_git.md)
 
 ## ubuntu 软件
 - [ubuntu 上程序安装文件](vimFile.txt)
