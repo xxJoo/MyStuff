@@ -1,3 +1,4 @@
+' https://github.com/willclark314/MyStuff/tree/master/autocad/map/AutoCAD_Settings.vba
 Sub AutoCAD_Settings()
 ' 对cad的初始环境进行设置
 ' 
@@ -13,8 +14,8 @@ Sub AutoCAD_Settings()
     Dim docObj As AcadDocument
     Set docObj = ThisDrawing.Application.Documents.Add
 
-    
 End Sub
+
 
 
 
