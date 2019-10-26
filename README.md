@@ -55,7 +55,7 @@
   
 ## windows 软件
 - [windows 软件配置](windows_softwares.txt)
-- [AutoCAD 软件配置](autocad/object_map/CAD配置.md)
+- [AutoCAD 软件配置](autocad/map/CAD配置.md)
 
 ## ubuntu 软件
 - [ubuntu 上程序安装文件](vimFile.txt)
