@@ -53,11 +53,11 @@
 - [3D3S快捷键](ShortCuts/ShortCuts_3D3S.lsp)
 - [Rhino快捷键](ShortCuts/ShortCuts_Rhino.txt)
   
-## windows 软件
-- [windows 软件配置](windows_softwares.md)
-- [AutoCAD 软件配置](CAD配置.md)
-- [VS Code 配置](VS_Code.md)
-- [git 配置](my_git.md)
+## 应用软件 **(config)**
+- [windows 配置](config/set_windows.md)
+- [AutoCAD 配置](config/set_CAD.md)
+- [VS Code 配置](config/set_VS_Code.md)
+- [git 配置](config/set_git.md)
 
 ## ubuntu 软件
 - [ubuntu 上程序安装文件](vimFile.txt)

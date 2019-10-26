@@ -39,6 +39,9 @@ setting content
         "*.lsp": "autolisp",
         "*.vba": "vba"
     },
+// paths
+    // "terminal.integrated.shell.windows": xxx,
+    // "git.path": xxx,
 // matlab
     // "matlab.linterEncoding": "GB 2312",
 }

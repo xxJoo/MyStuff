@@ -1,5 +1,9 @@
 
-$reForce = Get-Content .\3D3S_Reaction.txt
+
+param([string] $inpath = ".\powershell\test.txt")
+$outpath = "$inpath.default"
+Get-Content -Path $inpath | out-file $outpath -encoding Default
+# powershell 显示 utf8 字符为乱码
 
 # --------------------------------------------------------------------------
 # String
