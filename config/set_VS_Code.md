@@ -46,13 +46,21 @@ setting content
     "workbench.sideBar.location": "left",
     "files.associations": {
         "*.lsp": "autolisp",
-        "*.vba": "vba",
+        "*.vbs": "vb",
+        "*.vba": "vb",
+        "*.bas": "vb",
+        "*.vbe": "vb",
+        "*.wsf": "vb",
+        "*.wsc": "vb",
+        "*.acm": "vb",
+        "*.acr": "vb",
+        "*.acf": "vb",
     },
     "files.autoGuessEncoding": true,
     "[autolisp]":  {
         "editor.acceptSuggestionOnEnter": "off",
         "editor.autoClosingBrackets": "always",
-        "editor.autoClosingBrackets": true
+        "editor.autoClosingBrackets": true,
         "editor.insertSpaces": false,
         "editor.quickSuggestions": true,
         "editor.tabSize": 2,

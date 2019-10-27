@@ -1,7 +1,6 @@
 ' https://github.com/willclark314/MyStuff/tree/master/autocad/map/AutoCAD_Settings.vba
 Sub AutoCAD_Settings()
 ' 对cad的初始环境进行设置
-' 
 
     Dim dwgName As String
     dwgName = "c:\campus.dwg"
