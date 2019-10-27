@@ -8,3 +8,5 @@
 ; (findfile "AutoCAD_Settings.dvb")
 (command "_VBALOAD"  "AutoCAD_Settings.dvb")
 (prompt "╪стьмЙ╠о")
+
+

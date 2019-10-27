@@ -30,18 +30,37 @@ setting file path:
 setting content
 ```json
 {
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-icons",
+    "editor.detectIndentation": false,
+    // "editor.fontFamily": "Courier New, Microsoft Yahei Mono",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "files.autoGuessEncoding": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    // "git.path": xxx,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "One Dark Pro Vivid",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.sideBar.location": "left",
     "files.associations": {
         "*.lsp": "autolisp",
-        "*.vba": "vba"
+        "*.vba": "vba",
     },
-// paths
+    "files.autoGuessEncoding": true,
+    "[autolisp]":  {
+        "editor.acceptSuggestionOnEnter": "off",
+        "editor.autoClosingBrackets": "always",
+        "editor.autoClosingBrackets": true
+        "editor.insertSpaces": false,
+        "editor.quickSuggestions": true,
+        "editor.tabSize": 2,
+        "editor.wordBasedSuggestions": false,
+        "editor.wordWrap": "on",
+        "files.encoding": "utf8"
+    },
     // "terminal.integrated.shell.windows": xxx,
-    // "git.path": xxx,
 // matlab
     // "matlab.linterEncoding": "GB 2312",
 }
