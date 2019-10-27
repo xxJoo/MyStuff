@@ -1,5 +1,11 @@
 
 
+
+
+
+
+```powershell
+
 param([string] $inpath = ".\powershell\test.txt")
 $outpath = "$inpath.default"
 Get-Content -Path $inpath | out-file $outpath -encoding Default
@@ -89,3 +95,6 @@ $myText2 = {
 
 # $myText.Length - $myText.Replace("`n",'').Length + 1
 # $myText.ToString() | Out-GridView
+
+```
+

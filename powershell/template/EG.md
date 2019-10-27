@@ -16,7 +16,7 @@ PS> (39+79-51)*497/28
 $now=Get-Date
 $day=[datetime]'2-14'
 if($now -lt $day ){
- $day.Subtract($now).TotalMinutes
+    $day.Subtract($now).TotalMinutes
 }
 else{
     $day.AddYears(1).Subtract($now).TotalMinutes
