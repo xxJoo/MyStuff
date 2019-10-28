@@ -64,14 +64,6 @@ ls Cert:\LocalMachine\My\ |
 ```
 
 
-## 服务
-
-打印机服务有没有启动呢？
-```powershell
-Get-Service spooler
-```
-
-
 ## 进程
 
 当前运行了多少个IE进程？
