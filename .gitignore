@@ -2,7 +2,7 @@
 # https://www.cnblogs.com/kevingrace/p/5690241.html
 
 # Test script
-/.Testers/*
+*Tester*
 # visual studio settings
 /.vs/
 # visual studio code settings
@@ -10,7 +10,7 @@
 
 
 
-
+# templates
 /Temp_Markdown/*
 !/Temp_Markdown/MyMarkdownTemp.md
 !/Temp_Markdown/图片1.jpg
@@ -21,15 +21,20 @@
 /Temp_Calculaion/*.doc
 
 *__*
-*Testor*
 
-*._ls
+# python
 *.pyc
+
+# tex
 *.gz
 *.aux
 
-*.log
-*.draft
+# lisp
+*._ls
 
+# draft
+*.draft
+# log
+*.log
 
 
