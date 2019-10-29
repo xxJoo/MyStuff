@@ -51,7 +51,7 @@ GBK
 ```
 
 
-# 2010
+# 2010 (未配置成功)
 
 ```xml
 <locale name="zh_CN" encoding="GB2312" xpg_name="zh_CN.GB2312">
@@ -78,3 +78,59 @@ GBK
 ```
 
 
+# Shell 中运行 matlab
+
+命令说明 `matlab -nosplash -nodesktop -r tester`
+```
+-nosplash                     - Do not display the splash screen during startup.
+-nodesktop                    - Do not start the MATLAB desktop. Use V5 MATLAB
+                                command window for commands. The Java virtual
+                                machine will be started.
+-nojvm                        - Shut off all Java support by not starting the
+                                Java virtual machine. In particular the MATLAB
+                                desktop will not be started.
+-memmgr manager               - Set MATLAB_MEM_MGR to manager.
+                                manager - cache  (default)
+                                    - fast   for large models or MATLAB code
+                                             that uses many structure or
+                                             object variables. Is not helpful
+                                             for large arrays.
+                                    - debug  does memory integrity checking.
+                                             Useful for debugging memory
+                                             problems caused by user mex
+                                             files.
+-check_malloc                 - same as '-memmgr debug'.
+-r MATLAB_command             - Start MATLAB and execute the MATLAB_command.
+                                Any "M" file must be on the MATLAB path.
+-logfile log                  - Make a copy of any output to the command window
+                                in file log. This includes all crash reports.
+-timing                       - Print a summary of startup time to the command
+                                window. It is also recorded in a timing log,
+                                the name of which is printed to the MATLAB
+                                command window.
+-noFigureWindows              - Never display a figure window
+-automation                   - Start MATLAB as an automation server,
+                                minimized and without the MATLAB splash screen.
+echo     -regserver           - Register MATLAB as a COM server
+echo     -unregserver         - Remove MATLAB COM server registry entries.
+```
+
+shell 运行 matlab
+```powershell
+matlab -nodesktop -nosplash -r tester.m
+# 未定义变量 "tester" 或类 "tester.m"
+matlab -nodesktop -nosplash -nodisplay -nojvm -r tester
+# 成功
+matlab -nodesktop -nosplash -r tester
+# 成功
+matlab -nodesktop -nosplash -r "tester"
+# 成功
+```
+
+带路径运行
+```powershell
+matlab -sd E:\CW2\Project\GitHub\MyStuff\matlab\ -r tester
+# 成功
+matlab -sd (Join-Path (pwd) matlab) -nodesktop -nosplash -r tester
+# 成功
+```

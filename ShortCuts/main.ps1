@@ -5,14 +5,18 @@
 # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 
-# Show message in a box
-# message $myString
-Function Show-MessageBoxDialog([string]$myString = $find){
+
+
+Function Show-MessageBoxDialog([string] $myString = $find){
+    # Show message in a box
+    # message $myString
+    # example:
+    # Show-MessageBoxDialog($myString = "找到CAD安装路径")
+
     # Write-Host "Show-MessageBoxDialog"
     $PopUpWin = new-object -comobject wscript.shell
     [void]$PopUpWin.popup($myString)
 }
-# Show-MessageBoxDialog($myString = "找到CAD安装路径")
 
 # -------------------------------------------------------------------
 # via regitry
@@ -20,17 +24,24 @@ Function Show-MessageBoxDialog([string]$myString = $find){
 # then find the pgp file
 # -------------------------------------------------------------------
 
-# 查找 CAD 安装文件夹
+
 Function Find-File([bool]$key = $false){
+    # 查找 CAD 安装文件夹
     Write-Host "Find-File"
-    $find = Get-ChildItem -Path C:\ -Depth 2 -Filter 'AutoCAD 2016' `
-        -ErrorAction SilentlyContinue -ErrorVariable $abcd
+    $find = Get-ChildItem`
+        -Path C:\ -Depth 2`
+        -Filter 'AutoCAD 2016' 
+        -ErrorAction SilentlyContinue`
+        -ErrorVariable $abcd
     if ($null -ne $find){
         Show-MessageBoxDialog($myString = "找到CAD安装路径")
         return $find
     }
 }
+$find = Get-ChildItem -Path C:\ -Depth 2 -Filter 'AutoCAD 2016'
+
 # $CAD_Path = Find-File
+
 
 # 查找 PGP 文件
 Function Find-PGP_File($CAD2016_Path){
@@ -55,77 +66,6 @@ Function Find-PGP_File($CAD2016_Path){
 # file: AutoCAD_ShortCuts.txt
 # -------------------------------------------------------------------
 
-# CAD 快捷键
-# TODO 变成文本读取
-Function ShortCuts(){
-    Write-Host "ShortCuts"
-    $myShortCuts = '
-    ; ShortCutAdded By PowerShell
-    ;  -- CW Defined Command Aliases --
-    ;  Make any changes or additions to the default AutoCAD command aliases in 
-    ;  this section to ensure successful migration of these settings when you
-    ;  upgrade to the next version of AutoCAD.  If a command alias appears more
-    ;  than once in this file, items in the User Defined Command Alias take
-    ;  precedence over duplicates that appear earlier in the file.
-    ;  **********------------**********
-    ;  No xlate 
-    ;  DO NOT REMOVE
-
-    AE,       *MEASURE
-    AF,       *MATCHPROP
-    AV,       *DIVIDE
-    C,        *COPY
-    CA,       *CAL
-    CB,       *GJCHXB
-    CC,       *REFEDIT
-    CR,       *CIRCLE
-    D,        *DIMLINEAR
-    DA,       *ID
-    DC,       *DIMCONTINUE
-    DD,       *DIST
-    DDE,      *DDEDIT
-    DE,       *DIMANGULAR
-    DF,       *LENGTHEN
-    DG,       *DIMALIGNED
-    DR,       *LAYMCUR
-    DW,       *DIMRADIUS
-    DWW,      *DIMDIAMETER
-    EE,       *REFCLOSE
-    FD,       *ALIGN
-    FF,       *OFFSET
-    GG,       *JOIN
-    M,        *WBLOCK
-    Q,        *LINE
-    QA,       *POINT
-    QQ,       *PLINE
-    QS,       *QSELECT
-    R,        *ROTATE
-    RD,       *EXTERNALREFERENCES
-    RE,       *REGEN
-    SA,       *UCS
-    SS,       *BHATCH
-    T,        *TRIM
-    VA,       *DRAWORDER
-    VB,       *LAYON
-    VC,       *LAYOFF
-    VF,       *LAYISO
-    VG,       *LAYUNISO
-    VV,       *VPORTS
-    VW,       *LAYTHW
-    VZ,       *LAYFRZ
-    W,        *MOVE
-    WE,       *MIRROR
-    WQ,       *MLINE
-    WW,       *REVCLOUD
-    XX,       *XLINE
-
-    ; ShortCutAdded
-    '
-    # 如何去掉行首的 tab
-    # How To Remove the tab
-    # in front of every line of $myShortCuts
-    return $myShortCuts
-}
 
 
 

@@ -30,20 +30,22 @@ setting file path:
 setting content
 ```json
 {
+    "workbench.colorTheme": "One Dark Pro Vivid",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+
+    "window.zoomLevel": 0,
+
     "editor.detectIndentation": false,
     // "editor.fontFamily": "Courier New, Microsoft Yahei Mono",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
+
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    // "git.path": xxx,
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "One Dark Pro Vivid",
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.sideBar.location": "left",
+
+    "files.autoGuessEncoding": true,
     "files.associations": {
         "*.lsp": "autolisp",
         "*.vbs": "vb",
@@ -56,7 +58,12 @@ setting content
         "*.acr": "vb",
         "*.acf": "vb",
     },
-    "files.autoGuessEncoding": true,
+
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    // "git.path": xxx,
+
     "[autolisp]":  {
         "editor.acceptSuggestionOnEnter": "off",
         "editor.autoClosingBrackets": "always",
@@ -68,8 +75,11 @@ setting content
         "editor.wordWrap": "on",
         "files.encoding": "utf8"
     },
+
+    "[matlab]":  {
+        "files.encoding": "gbk"
+    },
     // "terminal.integrated.shell.windows": xxx,
-// matlab
     // "matlab.linterEncoding": "GB 2312",
 }
 ```
