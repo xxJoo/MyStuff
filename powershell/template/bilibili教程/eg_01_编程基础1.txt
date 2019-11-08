@@ -114,6 +114,8 @@ PS D:\MyDoc\firstrepository> 1,2,3 | %{ write-host ($PSItem + 2) }
 # 4
 -----------------------------------------------------------------------------------
 
-
+Get-CimInstance -ClassName Win32_PhysicalMemory | `
+    Select-Object Capacity | `
+    ForEach-Object { write-host $_ }
 
 
