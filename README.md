@@ -58,6 +58,7 @@
 - [AutoCAD 配置](config/set_CAD.md)
 - [VS Code 配置](config/set_VS_Code.md)
 - [git 配置](config/set_git.md)
+- [SVN 配置](config/set_svn.md)
 
 ## ubuntu 软件
 - [ubuntu 上程序安装文件](vimFile.txt)
