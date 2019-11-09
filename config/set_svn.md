@@ -28,6 +28,10 @@
 自动锁定
 [SVN文件加锁](https://www.cnblogs.com/slysky/p/8921154.html)
 
+# TODO 如何在新建文件时自动设置权限
+
+
+
 
 
 
