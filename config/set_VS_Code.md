@@ -44,6 +44,7 @@ setting content
 
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.autoReveal": false,
 
     "files.autoGuessEncoding": true,
     "files.associations": {
