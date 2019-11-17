@@ -71,127 +71,79 @@
 
 ```diskpart
 x:\sources> diskpart
-
-microsoft diskpart 版本 6.1.7601 
-copyright (c) 1999-2008 microsoft corporation. 
-在计算机上: minwinpc 
-
+    microsoft diskpart 版本 6.1.7601 
+    copyright (c) 1999-2008 microsoft corporation. 
+    在计算机上: minwinpc 
 diskpart> list disk 
-
-磁盘 ### 状态 大小 可用 dyn gpt 
-———— ——– ——— ——— —– —- 
-磁盘 0 联机 40 gb 40gb 
-
+    磁盘 ### 状态 大小 可用 dyn gpt 
+    ———— ——– ——— ——— —– —- 
+    磁盘 0 联机 40 gb 40gb 
 diskpart> select disk 0 
-
-磁盘 0 现在是所选磁盘。 
-
+    磁盘 0 现在是所选磁盘。 
 diskpart> create partition primary size=20480 
-
-diskpart 成功创建了指定分区。 
-
+    diskpart 成功创建了指定分区。 
 diskpart> create partition extended 
-
-diskpart 成功创建了指定分区。 
-
+    diskpart 成功创建了指定分区。 
 diskpart> create partition logical size=10240 
-
-diskpart 成功创建了指定分区。 
-
+    diskpart 成功创建了指定分区。 
 diskpart> create partition logical 
-
-diskpart 成功创建了指定分区。 
-
+    diskpart 成功创建了指定分区。 
 diskpart> list partition 
+    区 ### 类型 大小 偏移量
 
-分区 ### 类型 大小 偏移量
-
-分区 1 主要 20 gb 1024 kb 
-分区 0 扩展的 19 gb 20 gb 
-分区 2 逻辑 10 gb 20 gb 
-分区 3 逻辑 9 gb 30 gb 
-
+    区 1 主要 20 gb 1024 kb 
+    区 0 扩展的 19 gb 20 gb 
+    区 2 逻辑 10 gb 20 gb 
+    区 3 逻辑 9 gb 30 gb 
 diskpart> list volume 
-
-卷 ### ltr 标签 fs 类型 大小 状态 信息 
-———- —- ——————— ——– —————— ——– ————- ——– 
-卷 0 d grmculfrer_ udf dvd-rom 3519 mb 正常 
-卷 1 raw 磁盘分区 20 gb 正常 
-卷 2 raw 磁盘分区 10 gb 正常 
-卷 3 raw 磁盘分区 9 gb 正常 
-
+    卷 ### ltr 标签 fs 类型 大小 状态 信息 
+    ———- —- ——————— ——– —————— ——– ————- ——– 
+    卷 0 d grmculfrer_ udf dvd-rom 3519 mb 正常 
+    卷 1 raw 磁盘分区 20 gb 正常 
+    卷 2 raw 磁盘分区 10 gb 正常 
+    卷 3 raw 磁盘分区 9 gb 正常 
 diskpart> select volume 1 
-
-卷 1 是所选卷 
-
+    卷 1 是所选卷 
 diskpart> assign letter=c 
-
-diskpart 成功分配了驱动器号或者装载点。 
-
+    diskpart 成功分配了驱动器号或者装载点。 
 diskpart> select volume 2 
-
-卷 2 是所选卷 
-
+    卷 2 是所选卷 
 diskpart> assign letter=e 
-
-diskpart 成功分配了驱动器号或者装载点。 
-
+    diskpart 成功分配了驱动器号或者装载点。 
 diskpart> select volume 3 
-
-卷 3 是所选卷 
-
+    卷 3 是所选卷 
 diskpart> assign letter=f 
-
-diskpart 成功分配了驱动器号或者装载点。
-
+    diskpart 成功分配了驱动器号或者装载点。
 diskpart> list volume 
-
-卷 ### ltr 标签 fs 类型 大小 状态 信息 
-———- —- ——————— ——– —————— ——– ————- ——– 
-卷 0 d grmculfrer_ udf dvd-rom 3519 mb 正常 
-卷 1 c raw 磁盘分区 20 gb 正常 
-卷 2 e raw 磁盘分区 10 gb 正常 
-卷 3 f raw 磁盘分区 9 gb 正常 
-
+    卷 ### ltr 标签 fs 类型 大小 状态 信息 
+    ———- —- ——————— ——– —————— ——– ————- ——– 
+    卷 0 d grmculfrer_ udf dvd-rom 3519 mb 正常 
+    卷 1 c raw 磁盘分区 20 gb 正常 
+    卷 2 e raw 磁盘分区 10 gb 正常 
+    卷 3 f raw 磁盘分区 9 gb 正常 
 diskpart> select partition 1 
-
-分区 1 现在是所选分区。 
-
+    分区 1 现在是所选分区。 
 diskpart> format fs=ntfs lable="system" quick 
-
-100 百分比已完成 
-diskpart 成功格式化该卷。 
-
+    100 百分比已完成 
+    diskpart 成功格式化该卷。 
 diskpart> select partition 2 
-
-分区 2 现在是所选分区。 
-
+    分区 2 现在是所选分区。 
 diskpart> format fs=ntfs quick 
-
-100 百分比已完成 
-diskpart 成功格式化该卷。 
-
+    100 百分比已完成 
+    diskpart 成功格式化该卷。 
 diskpart> select partition 3 
-
-分区 3 现在是所选分区。 
-
+    分区 3 现在是所选分区。 
 diskpart> format fs=ntfs quick 
-
-100 百分比已完成 
-diskpart 成功格式化该卷。 
-
+    100 百分比已完成 
+    diskpart 成功格式化该卷。 
 diskpart> list volume 
-
-卷 ### ltr 标签 fs 类型 大小 状态 信息 
-———- —- ——————— ——– —————— ——– ————- ——– 
-卷 0 d grmculfrer_ udf dvd-rom 3519 mb 正常 
-卷 1 c system ntfs 磁盘分区 20 gb 正常 
-卷 2 e ntfs 磁盘分区 10 gb 正常 
-卷 3 f ntfs 磁盘分区 9 gb 正常 
-
+    卷 ### ltr 标签 fs 类型 大小 状态 信息 
+    ———- —- ——————— ——– —————— ——– ————- ——– 
+    卷 0 d grmculfrer_ udf dvd-rom 3519 mb 正常 
+    卷 1 c system ntfs 磁盘分区 20 gb 正常 
+    卷 2 e ntfs 磁盘分区 10 gb 正常 
+    卷 3 f ntfs 磁盘分区 9 gb 正常 
 diskpart> exit 
-
-退出 diskpart… 
-
+    退出 diskpart… 
 x:\sources>
 ```
