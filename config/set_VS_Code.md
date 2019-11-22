@@ -84,7 +84,7 @@ setting content
     "explorer.confirmDragAndDrop": false,
     "explorer.autoReveal": false,
 
-    "files.autoGuessEncoding": true,
+    "files.autoGuessEncoding": false,
     "files.associations": {
         "*.lsp": "autolisp",
         "*.vbs": "vb",
@@ -105,8 +105,8 @@ setting content
 
     "[autolisp]":  {
         "editor.acceptSuggestionOnEnter": "off",
-        // "editor.autoClosingBrackets": "always",
-        "editor.autoClosingBrackets": true,
+        "editor.autoClosingBrackets": "always",
+        // "editor.autoClosingBrackets": true,
         "editor.insertSpaces": false,
         "editor.quickSuggestions": true,
         "editor.tabSize": 2,

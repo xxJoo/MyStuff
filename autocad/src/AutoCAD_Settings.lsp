@@ -7,6 +7,6 @@
 ; (defun S::STARTUP() (command "_VBALOAD" "AutoCAD_Settings.dvb"))
 ; (findfile "AutoCAD_Settings.dvb")
 (command "_VBALOAD"  "AutoCAD_Settings.dvb")
-(prompt "╪стьмЙ╠о")
+(prompt "Е┼═Х╫╫Е╝▄Ф╞∙")
 
 
