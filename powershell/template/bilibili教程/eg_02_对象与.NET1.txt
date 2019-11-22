@@ -1,0 +1,81 @@
+**********************
+Windows PowerShell 脚本开始
+开始时间: 20190419102607
+计算机	  :  (Microsoft Windows NT 6.1.7601 Service Pack 1) 
+**********************
+PS E:\> Get-Location
+Path                                                                                         
+----                                                                                         
+E:\                                                                                          
+
+PS E:\> $location = Get-Location
+PS E:\> $location.Path
+E:\
+PS E:\> $location | gm
+
+   TypeName:System.Management.Automation.PathInfo
+
+Name         MemberType Definition                                               
+----         ---------- ----------                                               
+Equals       Method     bool Equals(System.Object obj)                           
+GetHashCode  Method     int GetHashCode()                                        
+GetType      Method     type GetType()                                           
+ToString     Method     string ToString()                                        
+Drive        Property   System.Management.Automation.PSDriveInfo Drive {get;}    
+Path         Property   string Path {get;}                                       
+Provider     Property   System.Management.Automation.ProviderInfo Provider {get;}
+ProviderPath Property   string ProviderPath {get;}                               
+
+PS E:\> $location.Drive
+Name   Used (GB)   Free (GB)   Provider     Root   CurrentLocation
+----   ---------   ---------   --------     ----   ---------------
+E         877.44      985.45   FileSystem   E:\                                                       
+
+PS E:\> cd cw
+PS E:\cw> $location = Get-Location
+PS E:\cw> $location
+Path                                                                                                                                                 
+----                                                                                                                                                 
+E:\cw                                                                                                                                                
+
+PS E:\cw> $location.Drive
+
+Name   Used (GB)   Free (GB)   Provider      Root   CurrentLocation
+----   ---------   ---------   --------      ----   ---------------
+E         877.44      985.45   FileSystem    E:\                 cw
+
+PS E:\cw> New-Object int16
+0
+PS E:\cw> $myObject = New-Object int16
+PS E:\cw> $myObject
+0
+PS E:\cw> $myObject.GetType()
+
+IsPublic IsSerial Name    BaseType                                                                                  
+-------- -------- ----    --------                                                                                  
+True     True     Int16   System.ValueType                                                                          
+
+
+PS E:\cw>   [System.Version]
+
+IsPublic IsSerial Name      BaseType                                                                                  
+-------- -------- ----      --------                                                                                  
+True     True     Version   System.Object                                                                             
+
+
+PS E:\cw> [System.Version] "1.0.3.4"
+
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+1      0      3      4       
+
+PS E:\cw> [System.ConsoleColor]::Red
+Red
+
+类型转换  方位类的静态元素（属性，方法）
+
+PS E:\cw> Stop-Transcript
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20190419142646
+**********************

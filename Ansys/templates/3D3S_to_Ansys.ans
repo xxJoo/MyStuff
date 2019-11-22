@@ -1,0 +1,593 @@
+! ansys 分析文件
+
+/PREP7
+! 从 3D3S 导出 mac 文件
+! 指定 mac 文件路径 dataPath
+! Read Input from ...
+
+! ------读取 3D3S 导出的文件
+/INPUT, 'ChangShou', 'mac', ''E:\Users\dell\Documents\vimdoc\Ansys\Model\'', 1, 0
+! ------------------------------------------------------------------------
+! /INPUT, Fname, Ext, Dir, LINE, LOG
+! Switches the input file for the commands that follow.
+! ------------------------------------------------------------------------
+
+! 坐标系和MST保持一致
+/VIEW,1,1,1,1   
+/VUP,1,-Z
+
+! 调整支座
+! 查询支座
+! DLIST, 3713
+! ------------------------------------------------------------------------
+! DLIST, NODE1, NODE2, NINC
+! Lists DOF constraints.
+! ------------------------------------------------------------------------
+! 3713
+! 3254
+! 3274
+! 3149
+! 3182
+! 1576
+! 1613
+! 1071
+! 806
+
+! 714
+! 1261
+! 1348
+! 1727
+! 1880
+! 2822
+! 2817
+! 2775
+! 2762
+
+
+! 2536
+! 2277
+! 2259
+! 2136
+! 1831
+! 1317
+
+! 1006
+! 1408
+! 1382
+! 4103
+! 4122
+! 4101
+
+
+! 通过约束状态选中
+
+! D,3274, , , , , , ,UZ, , , ,
+! DDELE, 3274, ALL, , , OFF
+! ------------------------------------------------------------------------
+! D, Node, Lab, VALUE, VALUE2, NEND, NINC, Lab2, Lab3, Lab4, Lab5, Lab6
+! Defines degree-of-freedom constraints at nodes.
+! ------------------------------------------------------------------------
+
+! 两种加约束的方法 还没弄懂
+! D, 491, UX, , , , , ROTZ
+! D, ALL, UY, , , , , ROTZ
+! D, 3851, , , , , ,UX, , , , ,
+
+! 删除节点约束
+! 如何GUI操作
+! DDELE, 4163, ALL, , , OFF
+! DDELE, 4163, ALL, , 1, OFF
+! DDELE, 4163, ALL, 4163, 1, OFF
+! ------------------------------------------------------------------------
+! DDELE, NODE, Lab, NEND, NINC, Rkey
+! Deletes degree-of-freedom constraints.
+! ------------------------------------------------------------------------
+
+
+
+! NSLE, S, ACTIVE
+! ------------------------------------------------------------------------
+! NSLE, Type, NodeType, Num
+! Selects those nodes attached to the selected elements.
+! ------------------------------------------------------------------------
+
+
+! 显示单元
+EPLOT
+
+! 两个命令一起显示适合窗口
+/AUTO, 1
+/REP,FAST
+
+! 显示截面
+! /ESHAPE, 1.0
+! 不显示截面
+! /ESHAPE, 0
+
+! 新建单元 3
+ET, 3, BEAM188
+
+! 新建材料例子
+! * 
+! MPTEMP,,,,,,,,  
+! MPTEMP,1,0  
+! MPTEMP,2,1  
+! MPDE,EX,3   
+! MPDE,PRXY,3 
+! MPDATA,EX,3,,2.06E+008  
+! MPDATA,EX,3,,2.06E+008  
+! MPDATA,PRXY,3,,0.3  
+! MPDATA,PRXY,3,,0.3 
+
+! 新建材料 3
+! 温度表格清零
+MPTEMP, , , , , , , ,   
+! ------------------------------------------------------------------------
+! MPTEMP, SLOC, T1, T2, T3, T4, T5, T6
+! Defines a temperature table for material properties.
+! ------------------------------------------------------------------------
+! If all arguments are blank, the temperature table is erased.
+MPTEMP, 1, 0
+! 添加第一个温度: 0
+MP, EX, 3, 2.06E8
+MP, PRXY, 3, 0.3
+MPDATA, DENS, 3, 1, 7.9
+
+
+! 温度表格清零
+MPTEMP, , , , , , , ,
+! 添加第一个温度: 0
+MPTEMP, 1, 0 
+
+! 材料表格清零
+MPDELE, NUXY, 1
+MPDELE, NUYZ, 1
+MPDELE, NUXZ, 1
+MPDELE, PRXY, 1
+MPDELE, PRYZ, 1
+MPDELE, PRXZ, 1
+MPDELE, EX, 1
+MPDELE,GXY,1
+MPDELE,GYZ,1
+MPDELE,GXZ,1
+
+! 添加材料属性
+MPDATA, EX, 1, , 2.06E+008
+MPDATA, EY, 1, , 2.06E+008
+MPDATA, EZ, 1, , 2.06E+008
+MPDATA, PRXY, 1, , 0.3
+MPDATA, PRYZ, 1, , 0.3
+MPDATA, PRXZ, 1, , 0.3
+MPDATA,GXY,1,,7.9E+007
+MPDATA,GYZ,1,,7.9E+007
+MPDATA,GXZ,1,,7.9E+007
+
+
+! ------------------------------------------------------------------------
+! -----------------------------多余参考代码--------------------------------
+! ------------------------------------------------------------------------
+! 为什么材料 1 是三向属性 (link 8 单元 网架)
+! 而材料 3 是单向属性 (beam 188 单元 单层网壳)
+! ------------------------------------------------------------------------
+! -----------------------------多余参考代码--------------------------------
+! ------------------------------------------------------------------------
+
+! 选中所有 beam4 单元
+ESEL, S, ENAME, , BEAM4
+! 修改选中的所有单元(单层网壳单元)为单元 3 (beam 188)
+EMODIF, ALL, TYPE, 3, 
+! ------------------------------------------------------------------------
+! EMODIF, IEL, STLOC, I1, I2, I3, I4, I5, I6, I7, I8
+! Modifies a previously defined element.
+! ------------------------------------------------------------------------
+! STLOC
+! If MAT, TYPE, REAL, ESYS, or SECNUM, modify only that attribute
+! to the I1 value.
+! ------------------------------------------------------------------------
+
+! 显示截面
+! /ESHAPE, 1.0
+! 不显示截面
+! /ESHAPE, 0
+
+! 定义截面
+SECTYPE,  1,  BEAM,  HREC,  BOX01,  0
+! ------------------------------------------------------------------------
+! SECTYPE, SECID, Type, Subtype, Name, REFINEKEY
+! Associates section type information with a section ID number.
+! ------------------------------------------------------------------------
+SECOFFSET, CENT 
+SECDATA, 0.25, 0.5, 0.012, 0.012, 0.012, 0.012, 0, 0, 0, 0, 0, 0
+
+! 选择所有
+ALLSEL
+FINISH
+
+! ------进入求解器
+/SOLUTION
+    ! ------静力分析
+    ANTYPE, STATIC
+    ! ------------------------------------------------------------------------
+    ! ANTYPE, Antype, Status, LDSTEP, SUBSTEP, Action
+    ! Specifies the analysis type and restart status.
+    ! ------------------------------------------------------------------------
+
+    ! ------预应力
+    PSTRES, ON
+    ! ------------------------------------------------------------------------
+    ! PSTRES, Key
+    ! Specifies whether prestress effects are calculated or included.
+    ! ------------------------------------------------------------------------
+
+    ! ------计算子步
+    NSUBST, 40
+    ! ------------------------------------------------------------------------
+    ! NSUBST, NSBSTP, NSBMX, NSBMN, Carry
+    ! Specifies the number of substeps to be taken this load step.
+    ! ------------------------------------------------------------------------
+    
+    ! RESCONTROL, LINEAR, ALL, 1
+    ! ------------------------------------------------------------------------
+    ! RESCONTROL, Action, Ldstep, Frequency, MAXFILES
+    ! Controls file writing for multiframe restarts.
+    ! ------------------------------------------------------------------------
+    OUTRES, ALL, ALL
+
+    ! ------求解
+    SOLVE
+
+! ------结束
+FINISH
+
+! ------静力求解检查
+/POST1
+PLNSOL, U, SUM, 0, 1.0
+PLNSOL, U,X, 0,1.0  
+PLNSOL, U,Y, 0,1.0  
+PLNSOL, U,Z, 0,1.0  
+FINISH
+
+! ------进入求解器
+/SOLUTION
+    ! ------线性稳定分析
+    ANTYPE, BUCKLE
+    ! ------------------------------------------------------------------------
+    ! ANTYPE, Antype, Status, LDSTEP, SUBSTEP, Action
+    ! Specifies the analysis type and restart status.
+    ! ------------------------------------------------------------------------
+   
+    ! ------这个分析是什么 例子里面有 这里没用
+    ! PERTURB,BUCKLE,,,ALLKEEP  
+    ! ------------------------------------------------------------------------
+    ! PERTURB, Type, MatKey, ContKey, LoadControl
+    ! Sets linear perturbation analysis options.  
+    ! ------------------------------------------------------------------------
+  
+    ! ------稳定分析方法: Block Lanczos
+    ! ------提取模态数量: 20
+    ! ------模态提取方法: RANGE
+    ! BUCOPT,LANB,20,0,0,
+    BUCOPT,LANB,20,0.01,300,RANGE
+    ! BUCOPT, LANB, 20, 0.1, 300,CENTER
+    ! RANGE需要手动改
+    ! ------------------------------------------------------------------------
+    ! BUCOPT, Method, NMODE, SHIFT, LDMULTE, RangeKey
+    ! Specifies buckling analysis options.
+    ! ------------------------------------------------------------------------
+    
+    ! ------模态展开数量: 20
+    ! ------是否计算单元: YES
+    MXPAND, 20, 0, 0, YES
+    ! MXPAND, 20, 0, 0, YES, 0.0001
+    ! mxpand, 20, 0, 0, 1, 0.0001
+    ! ------------------------------------------------------------------------
+    ! MXPAND, NMODE, FREQB, FREQE, Elcalc, SIGNIF, MSUPkey, ModeSelMethod
+    ! Specifies the number of modes to expand and write for a modal or
+    ! buckling analysis.
+    ! ------------------------------------------------------------------------
+    
+    ! ------所有计算结果 写入db文件
+    OUTRES, ALL, ALL
+    ! ------------------------------------------------------------------------
+    ! OUTRES, Item, Freq, Cname, -- , NSVAR
+    ! Controls the SOLUTIONtion data written to the database.
+    ! ------------------------------------------------------------------------
+    ALLSEL,ALL
+    ! ------求解 
+    SOLVE
+
+! ------离开求解器
+FINISH
+
+! ------线性稳定求解检查
+/POST1
+! SET, LIST
+SET, NEXT
+PLDISP, 0
+! /EFACET,1   
+! PLNSOL, U,SUM, 0,1.0
+! FINISH
+
+! ------进入前处理
+/PREP7
+
+    UPGEOM, 0.1, 1, 5, MyJob, rst
+    ! ------------------------------------------------------------------------
+    ! UPGEOM, FACTOR, LSTEP, SBSTEP, Fname, Ext, --
+    ! Adds displacements from a previous analysis and updates the geometry of
+    ! the finite element model to the deformed configuration.
+    ! ------------------------------------------------------------------------
+    
+    ! ------定义非线性材料特性表
+    ! ------Material model data table type: BKIN
+    !       Bilinear kinematic hardening using von Mises or Hill plasticity.
+    ! ------Material reference number: 1
+    TB, BKIN, 1
+    ! ------------------------------------------------------------------------
+    ! TB, Lab, MAT, NTEMP, NPTS, TBOPT, EOSOPT, FuncName
+    ! Activates a data table for material properties or special element input.
+    ! ------------------------------------------------------------------------
+    
+    ! ------材料表格
+    ! ------ Yield Stress: 345000 kPa
+    ! ------ Tangent modulus: 1000 ? kPa
+    TBDATA, 1, 345000, 1000
+    ! ------------------------------------------------------------------------
+    ! TBDATA, STLOC, C1, C2, C3, C4, C5, C6
+    ! Defines data for the material data table.
+    ! ------------------------------------------------------------------------
+    
+    TB, BKIN, 3
+    TBDATA, 1, 345000, 1000
+! ------离开前处理
+FINISH
+
+
+
+! ------进入求解器
+/SOLUTION
+
+    ! ------非线性 静力分析
+    ANTYPE, STATIC
+
+    ! ------大变形
+    NLGEOM, ON
+    ! ------------------------------------------------------------------------
+    ! NLGEOM, Key
+    ! Includes large-deflection effects in a static or full transient analysis.
+    ! ------------------------------------------------------------------------
+    
+    TIME, 1
+    ! ------------------------------------------------------------------------
+    ! TIME, TIME
+    ! Sets the time for a load step.
+    ! ------------------------------------------------------------------------
+
+    ! ------计算子步
+    NSUBST, 400
+    ! ------------------------------------------------------------------------
+    ! NSUBST, NSBSTP, NSBMX, NSBMN, Carry
+    ! Specifies the number of substeps to be taken this load step.
+    ! ------------------------------------------------------------------------
+
+    OUTRES,ALL,ALL
+
+    ! 节点 491
+    ! 节点 3851
+    ! x 位移溢出
+    ! 添加 x 约束之后可以求解
+    ! D, 491, , , , , ,UX, , , , ,
+    ! D, 3851, , , , , ,UX, , , , ,
+    ! ------------------------------------------------------------------------
+    ! D, Node, Lab, VALUE, VALUE2, NEND, NINC, Lab2, Lab3, Lab4, Lab5, Lab6
+    ! Defines degree-of-freedom constraints at nodes.
+    ! ------------------------------------------------------------------------
+    
+    ! 两种加约束的方法 还没弄懂
+    ! D, 491, UX, , , , , ROTZ
+    ! D, ALL, UY, , , , , ROTZ
+    ! D, 3851, , , , , ,UX, , , , ,
+
+    ! 删除节点约束
+    ! 如何GUI操作
+    ! DDELE, 4163, ALL, , 1, OFF
+    ! DDELE, 4163, ALL, 4163, 1, OFF
+    ! ------------------------------------------------------------------------
+    ! DDELE, NODE, Lab, NEND, NINC, Rkey
+    ! Deletes degree-of-freedom constraints.
+    ! ------------------------------------------------------------------------
+
+    SOLVE
+
+    ! ------------------------------------------------------------------------
+    ! 查找节点
+    ! PointNum = 491
+    ! a = NX(PointNum)
+    ! b = NY(PointNum)
+    ! c = nz(PointNum)
+    ! parameters-->scalar parameters
+    ! select-->entities-->by num/pick-->从弹出的框中输入节点坐标，完了再list
+    ! 如果知道节点坐标，想知道编号，用可以通过坐标选择节点，再查看其编号，
+    ! 或者用node()--最靠近某位置的节点编号的取值函数
+    ! ------------------------------------------------------------------------
+
+    SAVE
+! ------离开前处理
+FINISH
+
+
+
+
+! 后处理
+/POST1
+SET, LAST
+SET, PREVIOUS
+PLNSOL, U, SUM, 0, 1.0
+! PLNSOL, S, EQV, 0, 1.0
+! PLNSOL, S, INT, 0, 1.0
+! PLNSOL, SS, EQV, 0, 1.0
+! PLNSOL, U, Z, 0, 1.0
+! ------------------------------------------------------------------------
+! PLNSOL, Item, Comp, KUND, Fact, FileID 
+! Displays results as continuous contours.
+! ------------------------------------------------------------------------
+! Item
+! Label identifying the item. Valid item labels are shown in
+! Table 218: PLNSOL - Valid Item and Component Labels below.
+! Some items also require a component label.
+! ------------------------------------------------------------------------
+! Comp
+! Component of the item (if required). Valid component labels are shown
+! in Table 218: PLNSOL - Valid Item and Component Labels below.
+! ------------------------------------------------------------------------
+! KUND
+! Undisplaced shape key:
+! 0
+!  — 	
+! Do not overlay undeformed structure display
+! 1
+!  — 	
+! Overlay displaced contour plot with undeformed display (appearance is
+! system-dependent)
+! 2
+!  — 	
+! Overlay displaced contour plot with undeformed edge display (appearance
+! is system-dependent)
+! ------------------------------------------------------------------------
+! Fact
+! Scale factor for 2-D display for contact items. Default value is 1.
+! A negative scaling factor may be used to invert the display.
+! ------------------------------------------------------------------------
+! FileID
+! The file index number (obtained via the NLDIAG,NRRE,ON command). Valid
+! only for Item = NRRE.
+! ------------------------------------------------------------------------
+
+
+
+
+
+PLDISP, 2
+! ------------------------------------------------------------------------
+! PLDISP, KUND
+! Displays the displaced structure.
+! ------------------------------------------------------------------------
+! KUND
+! Undisplaced shape key:
+! ***********************************************************************
+! 0
+!  — 	
+! Display only displaced structure.
+! ***********************************************************************
+! 1
+!  — 	
+! Overlay displaced display with similar undisplaced display
+! (appearance is system-dependent).
+! ***********************************************************************
+! 2
+!  — 	
+! Same as 1 except overlay with undisplaced edge display (appearance
+! is system-dependent).
+! ------------------------------------------------------------------------
+
+SET, LIST
+! SET, 1, 85
+! ------------------------------------------------------------------------
+! SET, Lstep, Sbstep, Fact, KIMG, TIME, ANGLE, NSET, ORDER
+! Defines the data set to be read from the results file.
+! ------------------------------------------------------------------------
+! Lstep
+! Load step number of the data set to be read (defaults to 1):
+! ------------------------------------------------------------------------
+! N
+!  — 	
+! Read load step N.
+! ***********************************************************************
+! FIRST
+!  — 	
+! Read the first data set (Sbstep and TIME are ignored).
+! ***********************************************************************
+! LAST
+!  — 	
+! Read the last data set (Sbstep and TIME are ignored).
+! ***********************************************************************
+! NEXT
+!  — 	
+! Read the next data set (Sbstep and TIME are ignored). If at the last 
+! data set, the first data set will be read as the next.
+! ***********************************************************************
+! PREVIOUS
+!  — 	
+! Read the previous data set (Sbstep and TIME are ignored). If at the 
+! first data set, the last data set will be read as the previous.
+! ***********************************************************************
+! NEAR
+!  — 	
+! Read the data set nearest to TIME (Sbstep is ignored). If TIME is 
+! blank, read the first data set.
+! ***********************************************************************
+! LIST
+!  — 	
+! Scan the results file and list a summary of each load step.
+! (KIMG, TIME, ANGLE, and NSET are ignored.)
+! ------------------------------------------------------------------------
+
+
+
+
+
+
+
+! ------------------------------------------------------------------------
+! -----------------------------多余参考代码--------------------------------
+! ------------------------------------------------------------------------
+
+
+
+! NSEL, S, NODE, , 491
+! 选择节点
+
+! NSEL, ALL
+! ------------------------------------------------------------------------
+! NSEL, Type, Item, Comp, VMIN, VMAX, VINC, KABS
+! Selects a subset of nodes.
+! ------------------------------------------------------------------------
+! Type
+! Label identifying the type of select:
+! S
+!  — 	
+! Select a new set (default).
+! R
+!  — 	
+! Reselect a set from the current set.
+! A
+!  — 	
+! Additionally select a set and extend the current set.
+! U
+!  — 	
+! Unselect a set from the current set.
+! ALL
+!  — 	
+! Restore the full set.
+! NONE
+!  — 	
+! Unselect the full set.
+! INVE
+!  — 	
+! Invert the current set (selected becomes unselected and vice versa).
+! STAT
+!  — 	
+! Display the current select status.
+! The following fields are used only with Type = S, R, A, or U:
+! ------------------------------------------------------------------------
+! ESLN,ALL
+
+
+
+
+
+
+
+
+
+

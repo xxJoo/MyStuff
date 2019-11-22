@@ -1,0 +1,121 @@
+
+-----------------------------------------------------------------------------------
+PS C:\Users\#computername?> $surname = 'Johnl'
+PS C:\Users\#computername?> $surname
+# Johnl
+-----------------------------------------------------------------------------------
+PS C:\Users\#computername?> $length = 32
+PS C:\Users\#computername?> $length
+# 32
+-----------------------------------------------------------------------------------
+
+PS C:\Users\#computername?> $length.GetType()
+# IsPublic IsSerial Name                                     BaseType
+# -------- -------- ----                                     --------
+# True     True     Int32                                    System.ValueType
+
+PS C:\Users\#computername?> $surname.GetType()
+# IsPublic IsSerial Name                                     BaseType
+# -------- -------- ----                                     --------
+# True     True     String                                   System.Object
+
+
+-----------------------------------------------------------------------------------
+
+PS C:\Users\#computername?> $null
+PS C:\Users\#computername?> $uninitialized
+PS C:\Users\#computername?> $uninitialized -eq $null
+# True
+
+-----------------------------------------------------------------------------------
+PS C:\Users\#computername?> $true
+# True
+PS C:\Users\#computername?> $false
+# False
+
+-----------------------------------------------------------------------------------
+
+PS C:\Users\#computername?> $arr = @(1, 3, 5)
+PS C:\Users\#computername?> $arr[0]
+# 1
+PS C:\Users\#computername?> $arr[1]
+# 3
+PS C:\Users\#computername?> $arr[2]
+# 5
+PS C:\Users\#computername?> $arr[3]
+PS C:\Users\#computername?> $arr[3] =4
+# 索引超出了数组界限。
+# 所在位置 行:1 字符: 1
+# + $arr[3] =4
+# + ~~~~~~~~~~
+#     + CategoryInfo          : OperationStopped: (:) [], IndexOutOfRangeException
+#     + FullyQualifiedErrorId : System.IndexOutOfRangeException
+
+
+-----------------------------------------------------------------------------------
+
+PS C:\Users\#computername?> $haxi = @{ 'a' = 3; "name" = "will"}
+PS C:\Users\#computername?> $haxi
+# Name                           Value
+# ----                           -----
+# name                           will
+# a                              3
+
+
+PS C:\Users\#computername?> $haxi['a']
+# 3
+PS C:\Users\#computername?> $haxi[a]
+# 所在位置 行:1 字符: 7
+# + $haxi[a]
+# +       ~
+# 数组索引表达式丢失或无效。
+# 所在位置 行:1 字符: 7
+# + $haxi[a]
+# +       ~~
+# 表达式或语句中包含意外的标记“a]”。
+#     + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+#     + FullyQualifiedErrorId : MissingArrayIndexExpression
+
+
+PS C:\Users\#computername?> $haxi['name']
+# will
+PS C:\Users\#computername?> $haxi.Name
+# will
+
+
+PS C:\Users\#computername?> $haxi.Name = 'jason'
+# Name                           Value
+# ----                           -----
+# name                           jason
+# a                              3
+
+
+-----------------------------------------------------------------------------------
+
+# $_
+# 包含管道对象中的当前对象。在对管道中的每个对象或所选对象执行操作的命令中，可以使用此变量。
+PS C:\Users\#computername?> $_
+
+
+1,2,3 | ForEach-Object { write-host (2*$_) }
+# 2
+# 4
+# 6
+PS D:\MyDoc\firstrepository> 1,2,3 | %{ write-host ($PSItem + 2) }
+# 3
+# 4
+# 5
+
+1,2,3,4 | Where-Object {($_%2) -eq 1}
+# 1
+# 3
+1,2,3,4 | ?{($_%2) -eq 0}
+# 2
+# 4
+-----------------------------------------------------------------------------------
+
+Get-CimInstance -ClassName Win32_PhysicalMemory | `
+    Select-Object Capacity | `
+    ForEach-Object { write-host $_ }
+
+

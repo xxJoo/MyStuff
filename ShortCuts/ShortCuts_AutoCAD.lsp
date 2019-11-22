@@ -41,6 +41,7 @@ R,        *ROTATE
 RD,       *EXTERNALREFERENCES
 RE,       *REGEN
 RR,       *ROTATE3D
+RR,       *ROTATE3D
 SA,       *UCS
 SS,       *BHATCH
 T,        *TRIM
