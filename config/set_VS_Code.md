@@ -67,7 +67,7 @@ setting content
 
     "[autolisp]":  {
         "editor.acceptSuggestionOnEnter": "off",
-        "editor.autoClosingBrackets": "always",
+        // "editor.autoClosingBrackets": "always",
         "editor.autoClosingBrackets": true,
         "editor.insertSpaces": false,
         "editor.quickSuggestions": true,
