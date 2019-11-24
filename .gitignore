@@ -1,24 +1,25 @@
 # ignore rules
 # https://www.cnblogs.com/kevingrace/p/5690241.html
 
-# Test script
-*Tester*
+
 # visual studio settings
 /.vs/
 # visual studio code settings
 /.vscode/
+# what to do on this computer
+/todo.md
 
-
+# Test script
+*Tester*
 
 # templates
-/Temp_Markdown/*
-!/Temp_Markdown/MyMarkdownTemp.md
-!/Temp_Markdown/图片1.jpg
-!/Temp_Markdown/超链接txt文本.txt
-
-/Temp_Calculaion/_Template.tex
-/Temp_Calculaion/*.pdf
-/Temp_Calculaion/*.doc
+/Template/*
+!/Template/MyMarkdownTemp.md
+!/Template/CalTemp.tex
+# produced file
+/Template/_Template.tex
+/Template/*.pdf
+/Template/*.doc
 
 *__*
 
