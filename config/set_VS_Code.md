@@ -80,9 +80,9 @@ setting content
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
 
+    "explorer.autoReveal": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "explorer.autoReveal": false,
 
     "files.autoGuessEncoding": false,
     "files.associations": {
@@ -114,11 +114,17 @@ setting content
         "editor.wordWrap": "on",
         "files.encoding": "utf8"
     },
-
+    // ----------------------------------------------------------------------
+    // matlab setting
+    // ----------------------------------------------------------------------
+    // "matlab.mlintpath": "E:/Program Files/MATLAB/R2016a/bin/win64/mlint.exe",
+    // "matlab.matlabpath": "E:/Program Files/MATLAB/R2016a/bin/win64/MATLAB.exe",
+    // "matlab.linterEncoding": "GB 2312",
     "[matlab]":  {
         "files.encoding": "gbk"
     },
     // "terminal.integrated.shell.windows": xxx,
-    // "matlab.linterEncoding": "GB 2312",
+    // ----------------------------------------------------------------------
 }
 ```
+
