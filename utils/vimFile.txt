@@ -130,7 +130,6 @@ yum install
 yum is not installed
 ------------------------------------------------------
 
-<<<<<<< HEAD:vimFile.txt
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 let g:netrw_browse_split=1
@@ -146,5 +145,3 @@ let g:netrw_browse_split=1
 
 
 
-=======
->>>>>>> f657b2d2019a0236e3de7af3a34134f12e478342:utils/vimFile.txt
