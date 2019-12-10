@@ -76,12 +76,6 @@ with xlrd.open_workbook(file_path) as my_book:
             import json
             my_file.write(json.dumps(data_dict))
         # TODO 打开三个 txt 文件 并写入波数据
+        # with open((r'./wave/'+name+'m'+'.txt'), 'w', encoding='utf8') as my_file:
         
-
-
-
-
-
-
-
 
