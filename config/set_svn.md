@@ -5,7 +5,7 @@
 
 # 概念
 
-- repository
+- 仓库 repository
 - sandbox 
 <!-- TODO sandbox 是什么 -->
 - SVN目录
@@ -29,8 +29,6 @@
 
 自动锁定
 [SVN文件加锁](https://www.cnblogs.com/slysky/p/8921154.html)
-
-
 
 
 # 协同的几种方式

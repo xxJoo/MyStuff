@@ -109,7 +109,7 @@ setting content
     "git.enableSmartCommit": true,
     // "git.path": xxx,
 
-    "[autolisp]":  {
+    "[autolisp]": {
         "editor.acceptSuggestionOnEnter": "off",
         "editor.autoClosingBrackets": "always",
         // "editor.autoClosingBrackets": true,
@@ -120,8 +120,12 @@ setting content
         "editor.wordWrap": "on",
         "files.encoding": "utf8"
     },
-
-
+    "[tex]": {
+        "editor.tabSize": 2,
+    },
+    "[latex]": {
+        "editor.tabSize": 2,
+    },
     // ----------------------------------------------------------------------
     // matlab setting
     // ----------------------------------------------------------------------
