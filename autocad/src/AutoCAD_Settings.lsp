@@ -1,19 +1,35 @@
 ;;; <LISPDOC>
-;;; <SUBR>(AutoCAD_init)</SUBR>
-;;; <DESC>PreSettings for a new opened dwg file</DESC>
-;;; <RET>Nothing</RET>
+;;;   <SUBR>(AutoCAD_init)</SUBR>
+;;;   <DESC>PreSettings for a new opened dwg file</DESC>
+;;;   <RET>Nothing</RET>
 ;;; </LISPDOC>
-;;; 类文件参照
-;;; http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-A809CD71-4655-44E2-B674-1FE200B9FE30
-(vl-load-com)
-; --------------------------------------------------------------------------------
 
+; 类文件参照
+; http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-A809CD71-4655-44E2-B674-1FE200B9FE30
+
+
+; ACADLSPASDOC 系统变量
+; 0 仅将 acad.lsp 加载到任务中打开的第一个图形中
+; 1 将 acad.lsp 加载到每一个打开的图形中
+; (getvar "ACADLSPASDOC")
+; acad.lsp 是打开AutoCAD就加载一次
+; acaddoc.lsp 文件是每打开一个文件就加载一次
+
+
+;; TODO 获取当前路径
+; 尝试 01 vla-get-Path
+; (setq newSupportPath (?))
+; (setq newSupportPath (vla-get-Path "AutoCAD_init.lsp"))
+; (print path)
+; 尝试 02 findfile
 ; (findfile 文件名)	返回：该文件名的路径及文件名
 ; (findfile "AutoCAD_Settings.dvb")
 
 ; TODO 如何加载 vb 文件
 ; (command "_VBALOAD"  "AutoCAD_Settings.dvb")
 
+; 加载 ActiveX 技术
+(vl-load-com)
 ;; 获取 acad 对象 acadObj 
 (setq acadObj (vlax-get-acad-object))
 ; 获取当前的设置
@@ -22,38 +38,24 @@
 (setq file_setting (vla-get-Files preferences))
 ; 获取当前支持的路径 SupportPath
 (setq currSupportPath (vla-get-SupportPath file_setting))
+; 提示支持路径
 ; (alert (strcat "The current value for SupportPath is " currSupportPath))
-
-;; TODO 获取当前路径
-; (setq newSupportPath (?))
-; (setq newSupportPath (vla-get-Path "AutoCAD_init.lsp"))
-; (print path)
-
-
 ; 增加支持路径 newSupportPath
 ; (setq newSupportPath newSupportPath)
-; 没有找到当前路径的临时替代路径
-(setq newSupportPath "C:\\Tangent")
+; 增加支持路径 语法实例
+; (setq newSupportPath "C:\\Tangent")
 ; 在文件设置 file_setting 中添加新路径 newSupportPath
-(vla-put-SupportPath file_setting newSupportPath)
+; (vla-put-SupportPath file_setting newSupportPath)
 ; 复原支持路径
-(vla-put-SupportPath file_setting currSupportPath)
+; (vla-put-SupportPath file_setting currSupportPath)
 ; 提示支持路径已经复原
 ; (alert (strcat "The SupportPath value is reset to " currSupportPath))
-
-
-
-
-
-
+; 开始路径
 ; (getvar "STARTINFOLDER")
 ; "E:\\Users\\dell\\Documents\\"
-
+; 信任路径
 ; (getvar "TRUSTEDPATHS")
 ; "C:\\Tangent\\TArchT20V3\\SYS;C:\\Tangent\\TArchT20V3\\SYS20;C:\\Tangent\\TArchT20V3\\SYS20x64;C:\\Tangent\\TArchT20V3\\Lisp"
-
-; (getvar "ACADLSPASDOC")
-; 0
 
 
 (defun load_functions ()
