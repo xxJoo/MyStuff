@@ -6,26 +6,28 @@
 # 概念
 
 - 仓库 repository
-- sandbox 
-<!-- TODO sandbox 是什么 -->
+- 本地工作区 sandbox 
+
+- SVN基本操作
+  - 检出 checkout
+  - 跟新 update
+  - 提交 commit
+  - 删除 delete
+  - 加入 add
+  - 回溯 revert
+  - 查看日志 show log
+- SVN高阶操作
+  - 锁定 lock
+  - 解锁 unlock
+  - 导出 export
 - SVN目录
   - Trunk
   - Tag
   - Branch
-- SVN操作
-  - checkout
-  - export
-  - update
-  - commit
-  - delete
-  - show log
-  - add
-  - revert
-
 
 两种模型
-- 拷贝-修改-合并 (update-modify-commit)
-- 锁定-编辑-解锁 (lock-modify-unlock)
+- 拷贝-修改-合并 (update-modify-commit)     SVN(开放模式)
+- 锁定-编辑-解锁 (lock-modify-unlock)       VSS(独占模式)
 
 自动锁定
 [SVN文件加锁](https://www.cnblogs.com/slysky/p/8921154.html)
