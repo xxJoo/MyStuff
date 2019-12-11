@@ -3,10 +3,10 @@
 ;;; <DESC>Divide a set of lines into n segment</DESC>
 ;;; <RET>divide points</RET>
 ;;; </LISPDOC>
-; TODO µÈ·ÖÏß¶Î²¢Á¬½Ó
+; TODO ç­‰åˆ†çº¿æ®µå¹¶è¿æ¥
 
 (prompt "\nC_LineSetDivide.lsp\n")
-(prompt "ÅúÁ¿¶¨ÊıµÈ·Ö\n")
+(prompt "æ‰¹é‡å®šæ•°ç­‰åˆ†\n")
 
 (defun c:LineSetDivide (/ *error* main doc)
     (vl-load-com)
@@ -18,26 +18,26 @@
         ; -----------------------------------------------------------------------------
 
         ; select a set of lines
-        ; Ñ¡È¡Ô²»¡ºÍÖ±ÏßµÄ¼¯ºÏ
+        ; é€‰å–åœ†å¼§å’Œç›´çº¿çš„é›†åˆ
         (setq set_Lines (ssget '((0 . "arc,line"))))
-        ; Í³¼Æ¼¯ºÏÔªËØ¸öÊı
+        ; ç»Ÿè®¡é›†åˆå…ƒç´ ä¸ªæ•°
         (setq set_Lenghth (sslength set_Lines))
 
         ; divide every line into n segments
-        ; ¶ÁÈ¡µÈ·ÖÊı
+        ; è¯»å–ç­‰åˆ†æ•°
         (setq n (getint "divide into ? segments:"))
-        ; Èç¹û¼¯ºÏ·Ç¿Õ
+        ; å¦‚æœé›†åˆéç©º
         (if (/= set_Lenghth nil)
             (progn
-                ; ³õÊ¼»¯¼ÆÊıÆ÷ i
+                ; åˆå§‹åŒ–è®¡æ•°å™¨ i
                 (setq i 0)
-                ; µ±¼ÆÊıÆ÷ i Îª´ïµ½¼¯ºÏ³¤¶ÈÊ±
+                ; å½“è®¡æ•°å™¨ i ä¸ºè¾¾åˆ°é›†åˆé•¿åº¦æ—¶
                 (while (< i set_Lenghth)
-                    ; ¶ÁÈ¡µÚ i ¸öÔªËØµÄÍ¼ÔªÃû ´æÈë name_i
+                    ; è¯»å–ç¬¬ i ä¸ªå…ƒç´ çš„å›¾å…ƒå å­˜å…¥ name_i
                     (setq name_i (ssname set_Lines i))
-                    ; ¶ÔÔªËØ i ½øĞĞ¶¨ÊıµÈ·Ö
+                    ; å¯¹å…ƒç´  i è¿›è¡Œå®šæ•°ç­‰åˆ†
                     (command "divide" name_i n)
-                    ; ¼ÆÊıÆ÷Ôö¼Ó 1
+                    ; è®¡æ•°å™¨å¢åŠ  1
                     (setq i (+ i 1))
                 ); end while
             ); end progn

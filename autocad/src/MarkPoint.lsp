@@ -5,8 +5,8 @@
 ;;; </LISPDOC>
 
 (prompt "\nMarkPoint.lsp\n")
-(prompt "连续标注点的xyz坐标\n")
-; TODO 是否标注Z坐标
+(prompt "杩炵画鏍囨敞鐐圭殑xyz鍧愭爣\n")
+; TODO 鏄惁鏍囨敞Z鍧愭爣
 (defun c:MarkPoint (/ *error* main doc)
   (vl-load-com)
   (defun main()

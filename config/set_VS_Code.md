@@ -76,9 +76,13 @@ setting content
     "window.zoomLevel": 0,
 
     "editor.detectIndentation": false,
-    // "editor.fontFamily": "Courier New, Microsoft Yahei Mono",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
+    // 字体设定
+    // "editor.fontFamily": "Courier New, Microsoft Yahei Mono",
+    // "editor.fontFamily": "Consolas, 'Courier New', monospace"
+    // https://github.com/be5invis/Sarasa-Gothic/releases
+    "editor.fontFamily": "Sarasa Mono SC",
 
     "explorer.autoReveal": false,
     "explorer.confirmDelete": false,

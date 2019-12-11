@@ -6,7 +6,7 @@ PKPM的地震波文件（xls格式）
     特征周期 eigenPeriod
     主方向数 principalDivection ?
     次方向数 secondaryDivection ?
-    竖方向数 verticalDivection ?
+    竖方向数 verticalDivection  ?
     时间步长 recordStepLength
     波总时间 time
     主方向波数据 wave_Principal
@@ -77,5 +77,4 @@ with xlrd.open_workbook(file_path) as my_book:
             my_file.write(json.dumps(data_dict))
         # TODO 打开三个 txt 文件 并写入波数据
         # with open((r'./wave/'+name+'m'+'.txt'), 'w', encoding='utf8') as my_file:
-        
 

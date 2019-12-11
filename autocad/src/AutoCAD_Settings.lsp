@@ -97,7 +97,7 @@
   (setvar "PICKSTYLE" 0)     ; 无对象编组选择
   ; (FILETAB)                ; 显示文件选项卡
   ; (FILETABCLOSE)           ; 不显示文件选项卡
-  (setvar "CURSORSIZE" 5)  ; 十字光标大小
+  (setvar "CURSORSIZE" 5)    ; 十字光标大小
   (setvar "XFADECTL" 70)     ; 在位编辑和注释性图示
   (setvar "SAVETIME" 30)     ; 自动保存时间
   (setvar "ISAVEBAK" 0)      ; 每次保存均创建备份 否
