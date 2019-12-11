@@ -68,6 +68,7 @@ setting file path:
 setting content
 ```json
 {
+    "workbench.startupEditor": "welcomePage",
     "workbench.colorTheme": "One Dark Pro Vivid",
     "workbench.iconTheme": "vscode-icons",
     "workbench.sideBar.location": "left",
@@ -100,6 +101,7 @@ setting content
         "*.acm": "vb",
         "*.acr": "vb",
         "*.acf": "vb",
+        "*.m": "matlab"
     },
 
     "git.autofetch": true,
@@ -118,12 +120,15 @@ setting content
         "editor.wordWrap": "on",
         "files.encoding": "utf8"
     },
+
+
     // ----------------------------------------------------------------------
     // matlab setting
     // ----------------------------------------------------------------------
     // "matlab.mlintpath": "E:/Program Files/MATLAB/R2016a/bin/win64/mlint.exe",
     // "matlab.matlabpath": "E:/Program Files/MATLAB/R2016a/bin/win64/MATLAB.exe",
     // "matlab.linterEncoding": "GB 2312",
+    // "matlab.linterEncoding" : "utf8",
     "[matlab]":  {
         "files.encoding": "gbk"
     },
