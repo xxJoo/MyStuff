@@ -140,4 +140,30 @@ setting content
     // ----------------------------------------------------------------------
 }
 ```
+C:\Users\xxx\.vscode\extensions\jpnacaduser.autolisp-language-1.2.1
+```json
+{
+    // Symbols used as comments.
+    "comments": {
+        "lineComment": ";",
+        "blockComment": [";|", "|;"]
+    },
+    // Symbols that trigger highlighting of matching pair.
+    "brackets": [
+        ["(", ")"]
+    ],
+    // Symbols that are auto closed when typing.
+    "autoClosingPairs": [
+        { "open": "(", "close": ")"},
+        { "open": "\"", "close": "\"", "notIn": ["string"]},
+        { "open": "`", "close": "`"}  // `code span` for markdown-flavored comments :)
+    ],
+    // Symbols that can be used to surround a selection/
+    "surroundingPairs": [
+        ["(", ")"],
+        ["\"", "\""],
+        ["`", "`"]
+    ]
+}
 
+```
