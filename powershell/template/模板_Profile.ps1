@@ -1,12 +1,7 @@
+<# profile
+电脑里面共有 4 种 profile
+#>
 
-
-
-
-
-
-```powershell
-# profile
-#############################################################
 # 所有用户共有的profile
 Get-Content $pshome\profile.ps1
 # 所有用户（私有）
@@ -19,5 +14,3 @@ Get-Content $((Split-Path $profile -Parent)+ “\profile.ps1”)
 # 当前用户的profile；只在Powershell.exe中验证
 Get-Content $profile
 
-
-```
