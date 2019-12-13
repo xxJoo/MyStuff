@@ -1,0 +1,178 @@
+! E:\CW\Bitbucket\firstrepository\APDL\YunYang\Main.ans
+
+/UNITS,SI
+/PREP7
+
+
+!节点坐标
+!方向点
+!--------------------------------------------
+!----------------file input------------------
+!--------------------------------------------
+/INPUT,_Node,ans,E:\CW\Bitbucket\firstrepository\APDL\YunYang\,0
+    ! /INPUT, Fname, Ext, Dir, LINE, LOG
+    ! Switches the input file for the commands that follow.
+    ! Fname
+    ! File name and directory path (248 characters maximum,
+    ! including the characters needed for the directory path).
+    ! An unspecified directory path defaults to the working directory;
+    ! in this case, you can use all 248 characters for the file name.
+    ! The file name defaults to the current Jobname if Ext is specified.
+    ! Ext
+    ! Filename extension (eight-character maximum).
+    ! Dir
+    ! Directory path (64 characters maximum). Defaults to current directory.
+    ! LINE
+    ! A value indicating either a line number in the file
+    ! or a user-defined label in the file from which to begin reading the input file.
+    ! (blank), 0, or 1  Begins reading from the top of the file (default).
+    ! LINE_NUMBER  Begins reading from the specified line number in the file.
+    ! :label  Begins reading from the first line beginning
+    ! with the matching user-defined label :label
+    ! (beginning with a colon (:), 8 characters maximum).
+    ! LOG
+    ! Indicates whether secondary input from this command should be recorded
+    ! in the command log (File.LOG) and the database log:
+    ! 0  Record only the /INPUT command on the log (default).
+    ! 1  Record commands in the specified secondary file as they are executed.
+    
+
+!材性
+MP, EX,      1,     2.060e+011
+MP, NUXY,    1,     3.000e-001
+MP, DENS,    1,     7.850e+003
+MP, ALPX,    1,     1.200e-005
+TBDE,BKI    N,    1,,,
+TB,BKI    N,    1,1,2,1
+TBTEMP,0.0
+TBDATA,1,     2.350e+008,0
+MP, EX,      2,     2.060e+011
+MP, NUXY,    2,     3.000e-001
+MP, DENS,    2,     7.850e+003
+MP, ALPX,    2,     1.200e-005
+TBDE,BKI    N,    2,,,
+TB,BKI  N,    2,1,2,1
+TBTEMP,0.0
+TBDATA,1,     3.450e+008,0
+
+!梁杆索
+ET,        1, BEAM44
+KEYOPT,    1, 7,      0
+KEYOPT,    1, 8,      0
+ET,        2, BEAM44
+KEYOPT,    2, 7,     11
+KEYOPT,    2, 8,      0
+ET,        3, BEAM44
+KEYOPT,    3, 7,    111
+KEYOPT,    3, 8,      0
+
+!截面
+
+!梁截面
+R,     1, 0
+SECTYPE,1,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.137500,0.149500,8
+R,     2, 0
+SECTYPE,2,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.198000,0.213000,8
+R,     3, 0
+SECTYPE,3,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.174500,0.188500,8
+R,     4, 0
+SECTYPE,4,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.093500,0.101500,8
+R,     5, 0
+SECTYPE,5,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.112500,0.122500,8
+R,     6, 0
+SECTYPE,6,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.101500,0.109500,8
+R,     7, 0
+SECTYPE,7,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.051000,0.057000,8
+R,     8, 0
+SECTYPE,8,BEAM,CTUBE,,0
+SECOFFSET,CENT
+SECDATA,0.468000,0.500000,8
+
+!杆截面
+
+!索截面
+
+!单元
+
+!梁单元
+!--------------------------------------------
+!----------------file input------------------
+!--------------------------------------------
+/INPUT,_Element,ans,E:\CW\Bitbucket\firstrepository\APDL\YunYang\,0
+
+!杆单元
+
+!索单元
+
+!连接单元
+
+!板单元
+
+!层号
+!--------------------------------------------
+!----------------file input------------------
+!--------------------------------------------
+/INPUT,_Store,ans,E:\CW\Bitbucket\firstrepository\APDL\YunYang\,0
+
+allsel
+
+!节点约束
+!--------------------------------------------
+!----------------file input------------------
+!--------------------------------------------
+/INPUT,_Restrain,ans,E:\CW\Bitbucket\firstrepository\APDL\YunYang\,0
+
+
+!节点荷载
+/SOLU
+FCUM,ADD
+
+!工况0
+!--------------------------------------------
+!----------------file input------------------
+!--------------------------------------------
+/INPUT,_Condition,ans,E:\CW\Bitbucket\firstrepository\APDL\YunYang\,0
+
+
+!工况0
+*Use,Force_C0,1.0
+
+!工况1
+!*Use,Force_C1,1.0
+
+!工况2
+!*Use,Force_C2,1.0
+
+!工况3
+!*Use,Force_C3,1.0
+
+!工况4
+!*Use,Force_C4,1.0
+
+!工况5
+!*Use,Force_C5,1.0
+
+
+
+
+
+
+
+
+
+
+
