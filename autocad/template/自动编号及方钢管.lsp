@@ -7,29 +7,33 @@
   (setq n (getint "\n起始编号："))
   (while (setq pt (getpoint "\n拾取点:"))
     (command "text" pt 300 0 (rtos n 2 0))
-    (setq n (1+ n)))
+    (setq n (1+ n))
+  )
 )
 
-(vl-load-com)
+
 (defun c:fgg (/ en pt1 pt2 pt3 b h tt en1 en2)
-; 函数 fgg
-; 直线边方钢管
+  (vl-load-com)
+  ; 函数 fgg
+  ; 直线边方钢管
   (setq  
     oldcmd (getvar "cmdecho")
     oldsanp (getvar "osmode"))
   (setvar "cmdecho" 0)
   (setvar "osmode" 0)
+
   (setq
     b  (getreal "\n宽:")
     h  (getreal "\n高:")
     tt (getreal "\n厚:"))
   (while
+    ; TODO 可以直接用 entsel 过滤功能吗
     (and
       (setq en (car (entsel "\n拾取基线：")))
       (= "LINE" (cdr (assoc 0 (entget en)))))
     (setq
-      pt1 (vlax-curve-getstartpoint en)
-      pt2 (vlax-curve-getendpoint en)
+      pt1 (vlax-curve-getStartPoint en)
+      pt2 (vlax-curve-getEndPoint en)
       pt3 pt1)
     (if  (> (last pt1) (last pt2))
       (setq
