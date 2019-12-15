@@ -1,0 +1,381 @@
+! 求解线性稳定
+
+
+/SOLU
+ANTYPE, STATIC, NEW
+! ------------------------------------------------------------------------
+! ANTYPE, Antype, Status, LDSTEP, SUBSTEP, Action
+! Specifies the analysis type and restart status.
+! ------------------------------------------------------------------------
+! 
+! Antype
+! 
+! Analysis type
+! (defaults to the previously specified analysis type,
+! or to STATIC if none specified):
+! 
+! *******************
+! STATIC or 0
+!  —  
+! Perform a static analysis. Valid for all degrees of freedom.
+! *******************
+! BUCKLE or 1
+!  —  
+! Perform a buckling analysis.
+! Implies that a previous static solution was performed
+! with prestress effects calculated (PSTRES,ON).
+! Valid for structural degrees of freedom only.
+! *******************
+! MODAL or 2
+!  —  
+! Perform a modal analysis.
+! Valid for structural and fluid degrees of freedom.
+! *******************
+! HARMIC or 3
+!  —  
+! Perform a harmonic analysis.
+! Valid for structural, fluid, magnetic,
+! and electrical degrees of freedom.
+! *******************
+! TRANS or 4
+!  —  
+! Perform a transient analysis.
+! Valid for all degrees of freedom.
+! *******************
+! SUBSTR or 7
+!  —  
+! Perform a substructure analysis.
+! Valid for all degrees of freedom.
+! *******************
+! SPECTR or 8
+!  —  
+! Perform a spectrum analysis.
+! Implies that a previous modal analysis was performed.
+! Valid for structural degrees of freedom only.
+! ------------------------------------------------------------------------
+! 
+! Status
+! 
+! Specifies the status of the analysis (new or restart):
+! 
+! *******************
+! NEW
+!  —  
+! Specifies a new analysis (default).
+! If NEW, the remaining fields on this command are ignored.
+! 
+! *******************
+! RESTART
+!  —  
+! Specifies a restart of a previous analysis.
+! Valid for static, modal, and transient
+! (full or mode-superposition method) analyses.
+! For more information about restarting static and transient analyses,
+! see Multiframe Restart in the Basic Analysis Guide.
+! For more information on restarting a modal analysis,
+! see Modal Analysis Restart in the Basic Analysis Guide.
+! 
+! Multiframe restart is also valid for harmonic analysis,
+! but is limited to 2-D magnetic analysis only.
+! 
+! A substructure analysis (backsubstitution method only)
+! can be restarted for the purpose of generating additional load vectors.
+! For more information, see the SEOPT command and Applying Loads
+! and Creating the Superelement Matrices in the Advanced Analysis Guide.
+! 
+! *******************
+! VTREST
+!  —  
+! Specifies the restart of a previous VT Accelerator analysis.
+! Valid only with Antype = STATIC, HARMIC, or TRANS.
+! For more information, see VT Accelerator Re-run
+! in the Basic Analysis Guide.
+! ------------------------------------------------------------------------
+! 
+! LDSTEP
+! 
+! Specifies the load step at which a multiframe restart begins.
+! 
+! For full transient and nonlinear static analyses,
+! the default is the highest load step number found in the
+! Jobname.Rnnn files for the current jobname in the current directory.
+! 
+! For mode-superposition transient analyses, the default is none.
+! ------------------------------------------------------------------------
+! 
+! SUBSTEP
+! 
+! Specifies the substep at which a multiframe restart begins.
+! 
+! For full transient and nonlinear static analyses,
+! the default is the highest substep number found
+! for the specified LDSTEP in the
+! Jobname.Rnnn files in the current directory.
+! 
+! For mode-superposition transient analyses, the default is none.
+! ------------------------------------------------------------------------
+! Action
+! Specifies the manner of a multiframe restart.
+! *******************
+! CONTINUE
+!  —  
+! The program continues the analysis
+! based on the specified LDSTEP and SUBSTEP (default).
+! The current load step is continued.
+! If the end of the load step is encountered in the 
+! .Rnnn file, a new load step is started.
+! The program deletes all .Rnnn files,
+! or .Mnnn files for mode-superposition transient analyses,
+! beyond the point of restart and updates the 
+! .LDHI file if a new load step is encountered.
+! *******************
+! ENDSTEP
+!  —  
+! At restart,
+! force the specified load step (LDSTEP)
+! to end at the specified substep (SUBSTEP),
+! even though the end of the current load step has not been reached.
+! At the end of the specified substep,
+! all loadings are scaled to the level
+! of the current ending and stored in the .LDHI file.
+! A run following this ENDSTEP starts a new load step.
+! This capability allows you to change the load level
+! in the middle of a load step.
+! The program updates the .LDHI file and deletes all .Rnnn files,
+! or .Mnnn files for mode-superposition transient analyses,
+! beyond the point of ENDSTEP.
+! The .Rnnn or .Mnnn file at the point of ENDSTEP are rewritten
+! to record the rescaled load level.
+! *******************
+! RSTCREATE
+!  —  
+! At restart, retrieve information to be written
+! to the results file for the specified load step (LDSTEP)
+! and substep (SUBSTEP).
+! Be sure to use OUTRES to write the results to the results file.
+! This action does not affect the .LDHI or .Rnnn files.
+! Previous items stored in the results file at and beyond the point
+! of RSTCREATE are deleted. This option cannot be used
+! to restart a mode-superposition transient analysis.
+! *******************
+! PERTURB
+!  —  
+! At restart, a linear perturbation analysis
+! (static, modal, buckling, or full harmonic)
+! is performed for the specified load step (LDSTEP) and substep (SUBSTEP).
+! This action does not affect the .LDHI, .Rnnn, or .RST files.
+! 
+! For a linear perturbation analysis,
+! set Action = PERTURB; otherwise, the existing restart files,
+! such as the .LDHI, .Rnnn, or .RST file,
+! may be modified by the linear perturbation analysis.
+! Issue the PERTURB command to indicate the desired analysis type
+! (STATIC, MODAL, BUCKLE, or HARMONIC).
+! ------------------------------------------------------------------------
+
+PSTRES, ON
+
+! ------------------------------------------------------------------------
+! PSTRES, Key
+! Specifies whether prestress effects are calculated or included.
+! ------------------------------------------------------------------------
+! Key
+! Prestress key:
+! *******************
+! OFF
+!  —  
+! Do not calculate (or include) prestress effects (default).
+! *******************
+! ON
+!  —  
+! Calculate (or include) prestress effects.
+! ------------------------------------------------------------------------
+
+SOLVE
+FINISH
+
+
+
+
+
+! ------------------------------------------------------------------------
+
+/SOLU
+ANTYPE, STATIC, NEW
+PSTRES, ON
+SOLVE
+FINISH
+
+
+/SOLU
+ANTYPE, BUCKLE, NEW
+SOLVE
+FINISH
+
+  ! *****  INDEX OF DATA SETS ON RESULTS FILE  *****
+
+  !  SET   TIME/FREQ    LOAD STEP   SUBSTEP  CUMULATIVE
+  !    1 -7.0552             1         1         1     
+
+
+
+
+  ! *****  INDEX OF DATA SETS ON RESULTS FILE  *****
+
+  !  SET   TIME/FREQ    LOAD STEP   SUBSTEP  CUMULATIVE
+  !    1 -8.7786             1         1         1                  
+  !    2 -8.4622             1         2         2                  
+  !    3 -8.4149             1         3         3                  
+  !    4 -8.0179             1         4         4                  
+  !    5 -7.9362             1         5         5                  
+  !    6 -7.6969             1         6         6                  
+  !    7 -7.2830             1         7         7                  
+  !    8 -7.1066             1         8         8                  
+  !    9 -7.0552             1         9         9      
+
+
+! ------------------------------------------------------------------------
+
+
+
+/SOLU
+ANTYPE,MODAL 
+MODOPT,LANB,9
+MXPAND,9
+SOLVE
+FINISH
+
+! Ansys
+
+  ! *****  INDEX OF DATA SETS ON RESULTS FILE  *****
+
+  !  SET   TIME/FREQ    LOAD STEP   SUBSTEP  CUMULATIVE
+  !    1  2.2729             1         1         1                  
+  !    2  2.5494             1         2         2                  
+  !    3  3.1536             1         3         3                  
+  !    4  3.2759             1         4         4                  
+  !    5  3.4884             1         5         5                  
+  !    6  3.6933             1         6         6                  
+  !    7  3.8122             1         7         7                  
+  !    8  4.0191             1         8         8                  
+  !    9  4.3049             1         9         9     
+
+
+! 3D3S
+
+! 振型     周期（秒）       各振型质量参与系数
+!                       X方向    Y方向    Z方向
+! 1        0.82586      0.00%    0.64%    6.20%
+! 2        0.64156      2.43%   75.69%    0.01%
+! 3        0.50134      0.01%    0.00%    0.14%
+! 4        0.48006      0.01%    0.25%    0.30%
+! 5        0.46823      0.61%    0.04%    0.22%
+! 6        0.44420      0.00%    1.43%    0.09%
+! 7        0.43192      0.06%    0.14%   10.29%
+! 8        0.42599      0.00%    0.00%    0.17%
+! 9        0.39456      0.10%    0.00%    0.04%
+!                      ------------------------
+!                       3.23%   78.19%   17.44%
+
+! 非线性模块
+
+! 工况 模态号    系数
+!   0    1      11.265
+!   0    2      11.306
+!   0    3      11.472
+!   0    4      11.565
+!   0    5      11.709
+!   0    6      12.204
+!   0    7      13.302
+!   0    8      13.341
+!   0    9      14.194
+! ---------------------
+!   最小值       11.265
+
+
+! ------------------------------------------------------------------------
+
+
+
+
+
+
+
+! ------------------------------------------------------------------------
+
+
+
+/solu
+nsel,s,node,,1
+d,all,uy,,,,,rotz
+allsel
+nsel,s,node,,11
+d,all,ux
+f,all,fy,-1
+allsel
+dsym,symm,z
+rescontrol,linear,all,1
+solve
+finish
+
+/solu
+antype,static,restart,,,perturb
+perturb,buckle,,,allkeep
+solve,elform
+
+bucopt, lanb, 3
+mxpand, 3
+solve
+finish
+
+/post1
+file,,rstp
+set,list
+!pldisp,1               ! uncomment to plot displacement
+finis
+
+
+! ------------------------------------------------------------------------
+
+! A check of your model data produced 1 warnings.
+! SHOULD THE SOLV COMMAND BE EXECUTED
+
+
+
+!   *****  INDEX OF DATA SETS ON RESULTS FILE  *****
+
+!    SET   TIME/FREQ    LOAD STEP   SUBSTEP  CUMULATIVE
+!      1    -24.416          1         1         1  
+!      2    -20.093          1         2         2  
+!      3    -20.093          1         3         3  
+!      4    -18.714          1         4         4  
+!      5    -17.409          1         5         5  
+!      6    -17.409          1         6         6  
+!      7    -1.9089          1         7         7  
+!      8    -1.9089          1         8         8  
+!      9    -1.8583          1         9         9 
+
+
+
+! ------------------------------------------------------------------------
+
+
+
+! 3D3S 线性求解结果
+! 整体稳定系数：1.909
+
+!   振型     周期（秒）       各振型质量参与系数
+!                       X方向    Y方向    Z方向
+! 1        0.57483      0.00%   10.22%    0.04%
+! 2        0.52253      0.10%    0.00%    8.58%
+! 3        0.41303      0.18%    0.01%    2.10%
+! 4        0.38257      0.18%    0.04%    7.64%
+! 5        0.38133      0.00%    0.00%    0.06%
+! 6        0.36526      0.76%    0.57%    7.14%
+! 7        0.35666      0.04%   13.32%    0.14%
+! 8        0.34747      0.12%    0.15%    0.16%
+! 9        0.34217      0.02%    0.28%    8.17%
+!                      ------------------------
+!                       1.39%   24.59%   34.03%
+
+! ------------------------------------------------------------------------
