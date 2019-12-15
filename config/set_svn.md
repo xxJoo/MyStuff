@@ -91,31 +91,40 @@
 具体操作：
 
 1. 打开根目录Repo1
+
 ![rootPath](./pic/rootPath.png "打开根目录Repo1")
 <!-- <img src="./pic/rootPath.png" width = "500" div align= /> -->
 
 2. 在根目录右击属性（文件夹空白处右键属性）
+
 ![property](./pic/property.png "在根目录右击属性（文件夹空白处右键属性）")
 
 1. 在属性中选择，新建，需要锁定
+
 ![needsLock](./pic/needsLock.png "在属性中选择，新建，需要锁定")
 
 1. 需要锁定目录下，选择请求锁定（只读跟新），默认勾选递归应用，选择确定
+
 ![needsLock2](./pic/needsLock2.png "需要锁定目录下，选择请求锁定（只读跟新），默认勾选递归应用，选择确定")
 
 1. 可以看见文件虽然没有打开修改过，但都是被修改的符号标识
+
 ![fileMotified](./pic/fileMotified.png "可以看见文件虽然没有打开修改过，但都是被修改的符号标识")
 
 1. 此时右击提交修改
+
 ![fileMotified2](./pic/fileMotified2.png "此时右击提交修改")
 
 1. 可以看到文件本身未被修改，但是属性被修改了
+
 ![fileMotified3](./pic/fileMotified3.png "可以看到文件本身未被修改，但是属性被修改了")
 
 1. 将这些修改的属性提交给服务器
+
 ![fileMotified4](./pic/fileMotified4.png "将这些修改的属性提交给服务器")
 
 1. 恢复了正常同步状态
+
 ![fileMotified5]( "恢复了正常同步状态")
 
 1. 此时再在目录中新建文件
@@ -123,15 +132,25 @@
 ### 问题二：获取自己文件的所有权
 
 1. 选择自己的文件，右击，选择获取锁定
+
 ![getLock.png](./pic/getLock.png "选择自己的文件，右击，选择获取锁定")
+
 2. 在获取锁定对话框，填写获取锁定的原因，勾选文件，点击确定
+
 ![getLock.png](./pic/getLock2.png "在获取锁定对话框，填写获取锁定的原因，勾选文件，点击确定")
+
 3. 显示获取锁定成功，点击确定
+
 ![getLock.png](./pic/getLock3.png "显示获取锁定成功，点击确定")
+
 4. 文件已被解锁
+
 ![getLock.png](./pic/getLock4.png "文件已被解锁")
+
 5. 用同样的方式解锁两个文件
+
 ![getLock.png](./pic/getLock5.png "用同样的方式解锁两个文件")
+
 
 ### 问题三：提交之后**交出**文件所有权
 
