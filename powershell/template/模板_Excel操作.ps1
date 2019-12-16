@@ -22,18 +22,24 @@
 
 # example
 $xl = New-Object -ComObject excel.application
-$wb = $xl.workbooks.open([String](Join-Path (Get-Location) "PKPM2010.xls"))
+$wb = $xl.workbooks.open([String](Join-Path (Get-Location) "test.xlsx"))
 $sheet = $wb.sheets.item(1)
+$sheet.cells | get-member
 # 建立一个空哈希表 $data
 $data = @{}
 for ($i = 1; $i -le 6; $i++) {
     # 写入对应单元格的 键(key) 和 值(value)
-    $data[$sheet.cells.item($i,1).text] = $sheet.cells.item($i,2).text
+    $cell = $sheet.cells.item($i,1)
+    # $cell.GetType()
+    # $data[$cell.text] = [double]$sheet.cells.item($i,2).text
+    $data[$cell.text] = $sheet.cells.item($i,2).text
 }
-$data[$sheet.cells.item(1,4)] = $sheet.cells.
 # Write-Host $data
 $data | ConvertTo-Json
 #A列对应每行的值 A column correspond to per row value
+
+
+
 
 # 不出现提示
 $xl.displayAlerts = $False
@@ -45,3 +51,4 @@ $xl.Application.Quit()
 $xl = $null
 # 回收内存 ?
 [GC]::Collect()
+
