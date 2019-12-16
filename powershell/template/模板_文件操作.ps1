@@ -19,4 +19,5 @@ $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
 $FileBrowser.ShowDialog()
 # 拿到对象的 FileName 属性
 $FileBrowser.FileName
+$FileBrowser
 
