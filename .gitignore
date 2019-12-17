@@ -33,6 +33,9 @@
 # lisp
 *._ls
 
+# C++
+*.exe
+
 # draft
 *.draft
 # log
