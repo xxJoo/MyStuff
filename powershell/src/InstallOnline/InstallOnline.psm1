@@ -115,4 +115,19 @@ function Install-Vim {
     }
     end { Invoke-Item $env:temp }
 }
-
+function Install-TeXLive {
+    param (
+        [switch]
+        $Install
+    )
+    begin { Set-SecurityProtocolType }
+    process {
+        Install-SoftWareOnline `
+            -url 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2018-20180414.iso' `
+            -path "$env:temp\texlive2018-20180414.iso"
+        if ($Install) {
+            Start-Process $downLoaded_file
+        }
+    }
+    end { Invoke-Item $env:temp }
+}

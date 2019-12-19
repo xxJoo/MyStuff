@@ -140,6 +140,7 @@ setting content
     // ----------------------------------------------------------------------
 }
 ```
+# for autolisp comment
 C:\Users\xxx\.vscode\extensions\jpnacaduser.autolisp-language-1.2.1
 ```json
 {
@@ -166,4 +167,110 @@ C:\Users\xxx\.vscode\extensions\jpnacaduser.autolisp-language-1.2.1
     ]
 }
 
+```
+
+# for c++ compile
+
+## 配置调试环境
+1. 文件-->打开文件夹，设置项目路径
+
+2. 新建一个`.vscode`文件夹
+
+3. 创建一个`launch.json`启动配置文件
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch (GDB)",                
+            "type": "cppdbg",                         
+            "request": "launch",                        
+            "targetArchitecture": "x86",                
+            "program": "${workspaceRoot}/${fileBasename}.exe",                 
+            "miDebuggerPath":"C:/MinGW/bin/gdb.exe", 
+            "args": [],     
+            "stopAtEntry": false,                  
+            "cwd": "${workspaceRoot}",                  
+            "externalConsole": true,                  
+            "preLaunchTask": "g++"　　                  
+         }
+    ]
+}
+```
+4. 创建一个`tasks.json`的配置文件
+```json
+{
+    "version": "2.0.0",
+    "command": "g++",
+    "args": ["-g","-std=c++11","${file}","-o","${workspaceRoot}\\${fileBasename}.exe"],
+    "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": ["relative", "${workspaceRoot}"],
+        "pattern": {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "severity": 4,
+            "message": 5
+        }
+    }
+}
+```
+5. 创建一个`c_cpp_properties.json`文件，注意不同的版本的MINGW路径可能有些许不同
+```json
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceRoot}",
+                "C:/MinGW/lib/gcc/mingw32/8.2.0/include",
+                "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++",
+                "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/mingw32",
+                "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/backward",
+                "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/tr1",
+                "C:/MinGW/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "__GNUC__=6",
+                "__cdecl=__attribute__((__cdecl__))"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceRoot}",
+                    "C:/MinGW/lib/gcc/mingw32/8.2.0/include",
+                    "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++",
+                    "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/mingw32",
+                    "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/backward",
+                    "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/tr1",
+                    "C:/MinGW/include"
+                ]
+            },
+            "limitSymbolsToIncludedHeaders": true,
+            "databaseFilename": "",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
+```
+6. 新建一个`test.cpp`文件，并点击左侧的调试按钮
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout<<"Hello World!"<<endl;
+    return 0;
+}
 ```
