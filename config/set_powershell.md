@@ -18,4 +18,8 @@ powershell 需要 .NET 环境的支持，同时支持 .NET 对象。
 - Windows 8 或 Windows server 2012 PowerShell 3.0 内置，可升级为 4.0。
 - Windows 8.1 或 Windows server 2012 R2 PowerShell 4.0 内置，可升级为 。
 
- 
+# PowerShell 插件安装和配置
+
+在工具栏安装 PowerShell 插件
+
+

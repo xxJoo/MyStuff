@@ -1,6 +1,6 @@
 My settings for vs code
 
-# plugins
+# Plugins 插件安装
 ENABLED
 - Ansys APDL
 - autolisp language support
@@ -23,7 +23,7 @@ DISABLED
 - Markdown Preview Enhanced
 - Vim
 
-# json snippets files
+# json snippets files 代码片段
 snippets define file path:
 `C:\Users\$username$\AppData\Roaming\Code\User\snippets`
 ***
@@ -61,7 +61,7 @@ my snippets
 ```
 - 
 
-# settings in json
+# settings in json 设置
 setting file path:
 `C:\xxx\dell\AppData\Roaming\Code\User\settings.json`
 ***
@@ -140,7 +140,7 @@ setting content
     // ----------------------------------------------------------------------
 }
 ```
-# for autolisp comment
+# for autolisp comment Lisp语言支持
 C:\Users\xxx\.vscode\extensions\jpnacaduser.autolisp-language-1.2.1
 ```json
 {
@@ -169,7 +169,7 @@ C:\Users\xxx\.vscode\extensions\jpnacaduser.autolisp-language-1.2.1
 
 ```
 
-# for c++ compile
+# for c++ compile 配置调试
 
 ## 配置调试环境
 1. 文件-->打开文件夹，设置项目路径
@@ -274,3 +274,20 @@ int main()
     return 0;
 }
 ```
+
+
+# 快捷键 keybinding.json
+
+直接用 vim 插件了 
+
+
+
+
+
+
+
+
+
+
+
+
