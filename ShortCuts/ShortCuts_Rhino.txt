@@ -10,6 +10,7 @@ COn       '_CurvatureGraph
 CR        '_Circle
 DA        '_EvaluatePt
 DD        '_Distance
+DW        '_Angle
 E         '_Delete
 EX        '_Extend
 EXS       '_ExtendSrf
