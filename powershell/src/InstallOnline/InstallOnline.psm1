@@ -123,8 +123,8 @@ function Install-TeXLive {
     begin { Set-SecurityProtocolType }
     process {
         Install-SoftWareOnline `
-            -url 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2018-20180414.iso' `
-            -path "$env:temp\texlive2018-20180414.iso"
+            -url 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso' `
+            -path "$env:temp\texlive.iso"
         if ($Install) {
             Start-Process $downLoaded_file
         }
