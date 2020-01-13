@@ -131,3 +131,19 @@ function Install-TeXLive {
     }
     end { Invoke-Item $env:temp }
 }
+function Install-Pandoc {
+    param (
+        [switch]
+        $Install
+    )
+    begin { Set-SecurityProtocolType }
+    process {
+        Install-SoftWareOnline `
+            -url 'https://github.com/jgm/pandoc/releases/download/2.9.1/pandoc-2.9.1-windows-i386.msi' `
+            -path "$env:temp\pandoc-2.9.1-windows-i386.msi"
+        if ($Install) {
+            Start-Process $downLoaded_file
+        }
+    }
+    end { Invoke-Item $env:temp }
+}
