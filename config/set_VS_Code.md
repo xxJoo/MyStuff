@@ -109,6 +109,10 @@ setting content
     "git.enableSmartCommit": true,
     // "git.path": xxx,
 
+    // ----------------------------------------------------------------------
+    "python.pythonPath": "C:/Users/xxx/AppData/Local/Programs/Python/Python37-32/python3.exe",
+    // "python.linting.pylintPath": "pylint"
+    // ----------------------------------------------------------------------
     "[autolisp]": {
         "editor.acceptSuggestionOnEnter": "off",
         "editor.autoClosingBrackets": "always",
