@@ -62,10 +62,15 @@ my snippets
 - 
 
 # settings in json 设置
+
+
 setting file path:
 `C:\xxx\dell\AppData\Roaming\Code\User\settings.json`
 ***
 setting content
+
+
+
 ```json
 {
     "workbench.startupEditor": "welcomePage",
@@ -113,6 +118,13 @@ setting content
     "python.pythonPath": "C:/Users/xxx/AppData/Local/Programs/Python/Python37-32/python3.exe",
     // "python.linting.pylintPath": "pylint"
     // ----------------------------------------------------------------------
+
+
+    "python.pythonPath": "D:/Python36/python.exe",
+    "python.linting.pylintPath": "D:/Python36/pylint.exe",
+    // 这个路径下的 python
+    // C:/Users/xxxx/AppData/Local/Programs/Python/Python37-32/python.exe
+
     "[autolisp]": {
         "editor.acceptSuggestionOnEnter": "off",
         "editor.autoClosingBrackets": "always",
@@ -144,6 +156,10 @@ setting content
     // ----------------------------------------------------------------------
 }
 ```
+
+
+
+
 # for autolisp comment Lisp语言支持
 C:\Users\xxx\.vscode\extensions\jpnacaduser.autolisp-language-1.2.1
 ```json
