@@ -73,22 +73,23 @@ setting content
 
 ```json
 {
-    "workbench.startupEditor": "welcomePage",
-    "workbench.colorTheme": "One Dark Pro Vivid",
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.sideBar.location": "left",
     "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.panel.defaultLocation": "right",
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "welcomePage",
 
     "window.zoomLevel": 0,
 
     "editor.detectIndentation": false,
-    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Sarasa Mono SC",
+    "editor.minimap.enabled": true,
     "editor.renderWhitespace": "all",
     // 字体设定
     // "editor.fontFamily": "Courier New, Microsoft Yahei Mono",
     // "editor.fontFamily": "Consolas, 'Courier New', monospace"
     // https://github.com/be5invis/Sarasa-Gothic/releases
-    "editor.fontFamily": "Sarasa Mono SC",
 
     "explorer.autoReveal": false,
     "explorer.confirmDelete": false,
@@ -107,6 +108,14 @@ setting content
         "*.acr": "vb",
         "*.acf": "vb",
         "*.m": "matlab"
+    },
+    "files.exclude": {
+        // "**/.vscode": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
     },
 
     "git.autofetch": true,
