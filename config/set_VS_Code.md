@@ -23,12 +23,12 @@ DISABLED
 - Markdown Preview Enhanced
 - Vim
 
-# json snippets files 代码片段
-snippets define file path:
+# 代码片段 
+代码片段的管理文件是一个json文件 json snippets files 
+文件的路径 snippets define file path:
 `C:\Users\$username$\AppData\Roaming\Code\User\snippets`
 ***
-my snippets
-- example
+我定义的一些代码片段 my snippets
 ```json
 {
     // Place your snippets for autolisp here.
@@ -40,6 +40,7 @@ my snippets
     // $0 for the final cursor position, and
     // ${1:label}, ${2:another} for placeholders.
     // Placeholders with the same ids are connected.
+    // ---------------------------------------------------------
     // Example:
     // "Print to console": {
     // 	"prefix": "log",
@@ -49,6 +50,7 @@ my snippets
     // 	],
     // 	"description": "Log output to console"
     // }
+    // ---------------------------------------------------------
     "Print to console": {
         "prefix": "log",
         "body": [
@@ -59,17 +61,13 @@ my snippets
     }
 }
 ```
-- 
 
 # settings in json 设置
-
 
 setting file path:
 `C:\xxx\dell\AppData\Roaming\Code\User\settings.json`
 ***
 setting content
-
-
 
 ```json
 {
@@ -123,17 +121,6 @@ setting content
     "git.enableSmartCommit": true,
     // "git.path": xxx,
 
-    // ----------------------------------------------------------------------
-    "python.pythonPath": "C:/Users/xxx/AppData/Local/Programs/Python/Python37-32/python3.exe",
-    // "python.linting.pylintPath": "pylint"
-    // ----------------------------------------------------------------------
-
-
-    "python.pythonPath": "D:/Python36/python.exe",
-    "python.linting.pylintPath": "D:/Python36/pylint.exe",
-    // 这个路径下的 python
-    // C:/Users/xxxx/AppData/Local/Programs/Python/Python37-32/python.exe
-
     "[autolisp]": {
         "editor.acceptSuggestionOnEnter": "off",
         "editor.autoClosingBrackets": "always",
@@ -151,6 +138,111 @@ setting content
     "[latex]": {
         "editor.tabSize": 2,
     },
+    "[matlab]":  {
+        "files.encoding": "gbk"
+    },
+    // ----------------------------------------------------------------------
+    "python.pythonPath": "D:/Python36/python.exe",
+    "python.linting.pylintPath": "D:/Python36/pylint.exe",
+    // 这个路径下的 python
+    // C:/Users/xxxx/AppData/Local/Programs/Python/Python37-32/python.exe
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+
+    // ----------------------------------------------------------------------
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.message.update.show": false,
+    "latex-workshop.view.pdf.hand": true,
+    "latex-workshop.view.pdf.ref.viewer": "tabOrBrowser",
+    "latex-workshop.view.pdf.viewer": "external",
+    // "latex-workshop.view.pdf.viewer": "tab",
+    // "latex-workshop.view.pdf.zoom": "page-fit",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "PDFLaTeX",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "XeLaTeX",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "BibTeX",
+            "tools": [
+                "bibtex"
+            ] 
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+
+
     // ----------------------------------------------------------------------
     // matlab setting
     // ----------------------------------------------------------------------
@@ -158,9 +250,7 @@ setting content
     // "matlab.matlabpath": "E:/Program Files/MATLAB/R2016a/bin/win64/MATLAB.exe",
     // "matlab.linterEncoding": "GB 2312",
     // "matlab.linterEncoding" : "utf8",
-    "[matlab]":  {
-        "files.encoding": "gbk"
-    },
+
     // "terminal.integrated.shell.windows": xxx,
     // ----------------------------------------------------------------------
 }
