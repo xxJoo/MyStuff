@@ -142,6 +142,10 @@ setting content
         "files.encoding": "gbk"
     },
     // ----------------------------------------------------------------------
+    "python.venvFolders": [
+        "tutorial-env",
+    ],
+    "python.venvPath": "${workspaceFolder}",
     "python.pythonPath": "D:/Python36/python.exe",
     "python.linting.pylintPath": "D:/Python36/pylint.exe",
     // 这个路径下的 python
