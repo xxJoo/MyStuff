@@ -1,2 +1,0 @@
-# Ansys src
-- Commands.ans
