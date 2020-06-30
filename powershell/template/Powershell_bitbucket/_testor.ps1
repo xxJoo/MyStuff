@@ -1,15 +1,15 @@
-# ÖĞÎÄ
-# ÖĞÎÄÖĞÎÄ
+# ä¸­æ–‡
+# ä¸­æ–‡ä¸­æ–‡
 Get-Help about_Automatic_variables
 
 
-# 3D3S ÌáÈ¡¼ÆËãÊé
+# 3D3S æå–è®¡ç®—ä¹¦
 
 
 
 # Python
 # C:\Python27\
-# ÉèÖÃpipºÍpythonµÄ»·¾³±äÁ¿
+# è®¾ç½®pipå’Œpythonçš„ç¯å¢ƒå˜é‡
 [Environment]::SetEnvironmentvariable("Path", ";c:\powershellscript", "User")
 [Environment]::GetEnvironmentVariable("Path", "User")
 [Environment]::SetEnvironmentVariable("Path", $null, "User")
@@ -19,7 +19,7 @@ Get-Help about_Automatic_variables
 
 
 
-# ´¦ÀíÈÕÖ¾
+# å¤„ç†æ—¥å¿—
 
 $StartTime = (get-date).Date + (new-timespan -Hours 6 -Minutes 35)
 $EndTime = (get-date).Date + (new-timespan -Hours 6 -Minutes 36)
@@ -42,14 +42,14 @@ Foreach($Global:event in $Global:events)
         $Messagebody="Sync task started at:  "+$global:TaskStart.TimeCreated.DateTime+"`r`n"
         $Messagebody=$Messagebody+"`r`nSync task completed at:  "+$global:TaskComplete.timeCreated.DateTime+"`r`n"
         $Messagebody=$Messagebody+"`r`nTask lasted for "+("{0:N2}" -f ($Global:TimeSpent) )+" minutes"
-           
-        Send-MailMessage -From "CustomerLog@avepoint.com" -To "Zhijie.bai@avepoint.com","Infrastructure_cn@avepoint.com" -Subject "Customer Logs Sync Report:Success" -Body $Messagebody -SmtpServer "10.100.100.153" -Encoding UTF8
+        #LOL   
+        
     }
     else{
         $Messagebody="########################################################################`r`n"
         $Messagebody=$Messagebody+"`r`nCustom logs Sync failed, please login 10.2.0.125 to check and sync again`r`n"
         $Messagebody=$Messagebody+"`r`n########################################################################`r`n"
-        Send-MailMessage -From "CustomerLog@avepoint.com" -To "Zhijie.bai@avepoint.com","Infrastructure_cn@avepoint.com" -Subject "Customer Logs Sync Report:Failed" -Body $Messagebody -SmtpServer "10.100.100.153" -Encoding UTF8 -Priority High
+        #LOL
     }
 }
 
